@@ -1,2 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap')
+
+@font-face
+  font-family: '2MASS J1808'
+  src: url('fonts/2MASSJ1808-Heavy.eot')
+  src: local("2MASS J1808 Heavy"), local("2MASSJ1808-Heavy"), url('fonts/2MASSJ1808-Heavy.eot?#iefix') format("embedded-opentype"), url('fonts/2MASSJ1808-Heavy.woff2') format("woff2"), url('fonts/2MASSJ1808-Heavy.woff') format("woff"), url('fonts/2MASSJ1808-Heavy.ttf') format("truetype")
+  font-weight: 900
+  font-style: normal
+
+@font-face
+  font-family: '2MASS J1808'
+  src: url('fonts/2MASSJ1808-Normal.eot')
+  src: local("2MASS J1808 Normal"), local("2MASSJ1808-Normal"), url('fonts/2MASSJ1808-Normal.eot?#iefix') format("embedded-opentype"), url('fonts/2MASSJ1808-Normal.woff2') format("woff2"), url('fonts/2MASSJ1808-Normal.woff') format("woff"), url('fonts/2MASSJ1808-Normal.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+//Fonts
+$monteserat: 'Monteserat', sans-serif
+//Colors
+$white: #F4F4F4
+$red: #DA2525
+$dark-red: #9A1212
+$back: #242424
+div, a, span, section
+  box-sizing: border-box
+
 body
-  background: #4f4f4f
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  align-items: center
+  justify-items: center
+  background: $back
+  min-height: 50vh
+  width: 100vw
+
+a.button
+  display: inline-block
+  font-family: $monteserat
+  font-size: 15px
+  font-style: normal
+  font-weight: bold
+  color: $white
+  text-decoration: none
+  height: 45px
+  padding: 13.5px 26px
+  position: relative
+  transform-style: preserve-3d
+
+  &:before
+    transform: translateZ(-1px)
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 50%
+    background: $red
+    transition: .3s
+
+  &:hover
+    &:before
+      width: 100%
+
+    &:active:before
+      background: $dark-red
+
+  &:active
+
+a.circle-button
+  display: inline-block
+  font-family: $monteserat
+  font-size: 15px
+  font-style: normal
+  font-weight: 500
+  color: $white
+  text-decoration: none
+  transform-style: preserve-3d
+  width: 122px
+  text-align: center
+  letter-spacing: 0.25em
+  text-transform: uppercase
+
+  &:before
+    transform: translateZ(-1px)
+    content: ''
+    display: block
+    position: absolute
+    top: -56px
+    left: -3px
+    height: 122px
+    width: 122px
+    border-radius: 50%
+    border: solid 3px $red
+    transition: .3s
+    pointer-events: none
+
+  &:hover
+    &:before
+      top: -80.5px
+      left: -26px
+      height: 170px
+      width: 170px
+
+    &:active
+      &:before
+        top: -43px
+        left: 9px
+        height: 96px
+        width: 96px
+
+
+
+
