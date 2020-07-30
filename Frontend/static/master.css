@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
-
 @font-face {
   font-family: "2MASS J1808";
   src: url("fonts/2MASSJ1808-Heavy.eot");
@@ -20,15 +19,25 @@ div, a, span, section {
   box-sizing: border-box;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100vw;
+}
+
 body {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   align-items: center;
   justify-items: center;
   background: #242424;
   min-height: 50vh;
   width: 100vw;
+  max-width: 100vw;
   overflow-x: hidden;
+  grid-row-gap: 50px;
 }
 
 a.button-1 {
@@ -41,6 +50,7 @@ a.button-1 {
   text-decoration: none;
   height: 45px;
   padding: 13.5px 26px;
+  letter-spacing: 0.08em;
   position: relative;
   transform-style: preserve-3d;
 }
@@ -78,6 +88,7 @@ a.button-2 {
   position: relative;
   transform-style: preserve-3d;
   border: 2px solid #DA2525;
+  letter-spacing: 0.08em;
   background: url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat;
   transition: 0.3s;
 }
@@ -160,6 +171,50 @@ a.large-button:hover {
 a.large-button:active {
   background: #9A1212 url("img/arrow-right.svg") 808px 50% no-repeat;
   border: 2px solid #9A1212;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+  align-items: center;
+  grid-gap: 65px;
+}
+
+.links a .link-image {
+  transition: 0.3s;
+}
+
+.links a:hover .link-image {
+  fill: #F4F4F4;
+  opacity: 1;
+}
+
+.links a:active .link-image {
+  fill: #DA2525;
+  opacity: 1;
+}
+
+input.field {
+  font-family: "Monteserat", sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 145%;
+  letter-spacing: 0.04em;
+  width: 582px;
+  background: #242424;
+  padding-bottom: 10px;
+  border-color: transparent;
+  border-bottom: solid 1px rgba(244, 244, 244, 0.4);
+  transition: 0.3s;
+  color: #F4F4F4;
+}
+
+input.field:focus {
+  outline: none;
+  border-bottom: solid 1px #DA2525;
+  caret-color: #DA2525;
 }
 
 /*# sourceMappingURL=master.css.map */
