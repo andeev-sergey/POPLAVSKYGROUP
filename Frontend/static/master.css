@@ -1,0 +1,165 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+
+@font-face {
+  font-family: "2MASS J1808";
+  src: url("fonts/2MASSJ1808-Heavy.eot");
+  src: local("2MASS J1808 Heavy"), local("2MASSJ1808-Heavy"), url("fonts/2MASSJ1808-Heavy.eot?#iefix") format("embedded-opentype"), url("fonts/2MASSJ1808-Heavy.woff2") format("woff2"), url("fonts/2MASSJ1808-Heavy.woff") format("woff"), url("fonts/2MASSJ1808-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "2MASS J1808";
+  src: url("fonts/2MASSJ1808-Normal.eot");
+  src: local("2MASS J1808 Normal"), local("2MASSJ1808-Normal"), url("fonts/2MASSJ1808-Normal.eot?#iefix") format("embedded-opentype"), url("fonts/2MASSJ1808-Normal.woff2") format("woff2"), url("fonts/2MASSJ1808-Normal.woff") format("woff"), url("fonts/2MASSJ1808-Normal.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+div, a, span, section {
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-items: center;
+  background: #242424;
+  min-height: 50vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+a.button-1 {
+  display: inline-block;
+  font-family: "Monteserat", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+  color: #F4F4F4;
+  text-decoration: none;
+  height: 45px;
+  padding: 13.5px 26px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+a.button-1:before {
+  transform: translateZ(-1px);
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: #DA2525;
+  transition: 0.3s;
+}
+
+a.button-1:hover:before {
+  width: 100%;
+}
+
+a.button-1:hover:active:before {
+  background: #9A1212;
+}
+
+a.button-2 {
+  display: inline-block;
+  font-family: "Monteserat", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+  color: #F4F4F4;
+  text-decoration: none;
+  padding: 13.5px 80px 13.5px 26px;
+  position: relative;
+  transform-style: preserve-3d;
+  border: 2px solid #DA2525;
+  background: url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat;
+  transition: 0.3s;
+}
+
+a.button-2:hover {
+  background: #DA2525 url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat;
+}
+
+a.button-2:active {
+  background: #9A1212 url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat;
+  border: 2px solid #9A1212;
+}
+
+a.circle-button {
+  display: inline-block;
+  font-family: "Monteserat", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  color: #F4F4F4;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  width: 122px;
+  text-align: center;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+a.circle-button:before {
+  transform: translateZ(-1px);
+  content: "";
+  display: block;
+  position: absolute;
+  top: -56px;
+  left: -3px;
+  height: 122px;
+  width: 122px;
+  border-radius: 50%;
+  border: solid 3px #DA2525;
+  transition: 0.3s;
+  pointer-events: none;
+}
+
+a.circle-button:hover:before {
+  top: -80.5px;
+  left: -26px;
+  height: 170px;
+  width: 170px;
+}
+
+a.circle-button:hover:active:before {
+  top: -43px;
+  left: 9px;
+  height: 96px;
+  width: 96px;
+}
+
+a.large-button {
+  display: inline-block;
+  font-family: "Monteserat", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 20px;
+  letter-spacing: 0.08em;
+  color: #F4F4F4;
+  text-decoration: none;
+  transform-style: preserve-3d;
+  padding: 17px 35px;
+  width: 852px;
+  border: 2px solid #DA2525;
+  background: url("img/arrow-right.svg") 808px 50% no-repeat;
+  transition: 0.3s;
+}
+
+a.large-button:hover {
+  background: #DA2525 url("img/arrow-right.svg") 808px 50% no-repeat;
+}
+
+a.large-button:active {
+  background: #9A1212 url("img/arrow-right.svg") 808px 50% no-repeat;
+  border: 2px solid #9A1212;
+}
+
+/*# sourceMappingURL=master.css.map */

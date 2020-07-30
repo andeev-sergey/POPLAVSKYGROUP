@@ -33,7 +33,7 @@ body
   width: 100vw
   overflow-x: hidden
 
-a.button
+a.button-1
   display: inline-block
   font-family: $monteserat
   font-size: 15px
@@ -65,7 +65,29 @@ a.button
     &:active:before
       background: $dark-red
 
+
+a.button-2
+  display: inline-block
+  font-family: $monteserat
+  font-size: 15px
+  font-style: normal
+  font-weight: bold
+  color: $white
+  text-decoration: none
+  padding: 13.5px 80px 13.5px 26px
+  position: relative
+  transform-style: preserve-3d
+  border: 2px solid #DA2525
+  background: url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
+  transition: .3s
+
+  &:hover
+    background: $red url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
+
   &:active
+    background: $dark-red url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
+    border: 2px solid $dark-red
+
 
 a.circle-button
   display: inline-block
