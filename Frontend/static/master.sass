@@ -25,12 +25,13 @@ div, a, span, section
 
 body
   display: grid
-  grid-template-columns: repeat(3, 1fr)
+  grid-template-columns: repeat(2, 1fr)
   align-items: center
   justify-items: center
   background: $back
   min-height: 50vh
   width: 100vw
+  overflow-x: hidden
 
 a.button
   display: inline-block
@@ -108,6 +109,29 @@ a.circle-button
         height: 96px
         width: 96px
 
+a.large-button
+  display: inline-block
+  font-family: $monteserat
+  font-size: 16px
+  font-style: normal
+  font-weight: bold
+  line-height: 20px
+  letter-spacing: 0.08em
+  color: $white
+  text-decoration: none
+  transform-style: preserve-3d
+  padding: 17px 35px
+  width: 852px
+  border: 2px solid #DA2525
+  background: url("img/arrow-right.svg") 808px 50% no-repeat
+  transition: .3s
+
+  &:hover
+    background: $red url("img/arrow-right.svg") 808px 50% no-repeat
+
+  &:active
+    background: $dark-red url("img/arrow-right.svg") 808px 50% no-repeat
+    border: 2px solid $dark-red
 
 
 
