@@ -63,7 +63,7 @@ class Case(models.Model):
     descrition_ru = models.TextField('Описание проекта', max_length=500)
     descrition_eng = models.TextField('Описание проекта на английском', max_length=500)
     price_rub = models.IntegerField('Цена в рублях', blank=False)
-    price_usd = models.IntegerField('Цена в рублях', blank=False)
+    price_usd = models.IntegerField('Цена в $', blank=False)
     Style_ru = models.CharField('Стиль проекта', max_length=30)
     style_eng = models.CharField('Стиль проекта на английском', max_length=30)
     year = models.IntegerField('Год проекта', choices=year_choices, default=current_year())
@@ -89,3 +89,13 @@ class Review(models.Model):
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+
+class Worker(models.Model):
+    name_ru = models.CharField('Имя', max_length=30)
+    name_eng = models.CharField('Имя на английском', max_length=30)
+    title_ru = models.CharField('Должность', max_length=30)
+    title_eng = models.CharField('Должность на английском', max_length=30)
+
+    class Meta:
+        verbose_name = 'Работник'
+        verbose_name_plural = 'Наша комнада'
