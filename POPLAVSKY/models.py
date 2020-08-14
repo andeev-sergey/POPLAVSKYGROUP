@@ -52,12 +52,15 @@ class Room(models.Model):
     room_descrition_ru = models.TextField('Описание комнаты', max_length=500)
     room_descrition_eng = models.TextField('Описание комнаты на английском', max_length=500)
 
+    def __str__(self):
+        return self.name_ru
+
 
 class Case(models.Model):
     category = models.ForeignKey('Категория', CaseCategory, on_delete=models.CASCADE)
     preview_image = models.ImageField("Превью", upload_to='Cases/', blank=True)
-    name_ru = models.CharField('Название проекта', max_length=30)
-    name_eng = models.CharField('Название проекта на английском', max_length=30)
+    title_ru = models.CharField('Название проекта', max_length=30)
+    title_eng = models.CharField('Название проекта на английском', max_length=30)
     short_descrition_ru = models.CharField('Краткое писание проекта', max_length=30)
     short_descrition_eng = models.CharField('Краткое описание проекта на английском', max_length=30)
     descrition_ru = models.TextField('Описание проекта', max_length=500)
@@ -69,6 +72,9 @@ class Case(models.Model):
     year = models.IntegerField('Год проекта', choices=year_choices, default=current_year())
     areas = models.ManyToManyField(Area, verbose_name='Площади', blank=False)
     project_plan = models.ImageField("План проекта", upload_to='Cases/', blank=True)
+
+    def __str__(self):
+        return self.title_ru
 
     class Meta:
         verbose_name = "Проект"
@@ -86,16 +92,37 @@ class Review(models.Model):
     review_title_eng = models.CharField('Заголовок отзыва на англипйском', blank=False, max_length=30)
     review_body_eng = models.TextField('Отзыв на английском', blank=False)
 
+    def __str__(self):
+        return self.name
+
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
+
 
 class Worker(models.Model):
     name_ru = models.CharField('Имя', max_length=30)
     name_eng = models.CharField('Имя на английском', max_length=30)
     title_ru = models.CharField('Должность', max_length=30)
     title_eng = models.CharField('Должность на английском', max_length=30)
+    image = models.ImageField("Фото", upload_to='Team/', blank=True)
+
+    def __str__(self):
+        return self.name_ru
 
     class Meta:
         verbose_name = 'Работник'
         verbose_name_plural = 'Наша комнада'
+
+
+class Partners(models.Model):
+    name_ru = models.CharField('Название', max_length=30)
+    name_eng = models.CharField('Название на английском', max_length=30)
+    image = models.ImageField("Лого партнёра", upload_to='Partners/', blank=True)
+
+    def __str__(self):
+        return self.name_ru
+
+    class Meta:
+        verbose_name = 'Партнёр'
+        verbose_name_plural = 'Партнёры'
