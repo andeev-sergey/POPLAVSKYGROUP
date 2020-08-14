@@ -3,7 +3,7 @@ import datetime
 
 
 def year_choices():
-    return [(r, r) for r in range(1984, datetime.date.today().year + 1)]
+    return ((r, r) for r in range(1984, datetime.date.today().year + 1))
 
 
 def current_year():
@@ -39,7 +39,7 @@ class CaseCategory(models.Model):
 class Area(models.Model):
     name_ru = models.CharField('Название зоны', max_length=30)
     name_eng = models.CharField('Название зоны на английском', max_length=30)
-    area_value = models.CharField('Значение в м2')
+    area_value = models.CharField('Значение в м2', max_length=30)
 
     def __str__(self):
         return self.area_value
@@ -57,7 +57,7 @@ class Room(models.Model):
 
 
 class Case(models.Model):
-    category = models.ForeignKey('Категория', CaseCategory, on_delete=models.CASCADE)
+    category = models.ForeignKey(CaseCategory, verbose_name='Категория', on_delete=models.CASCADE)
     preview_image = models.ImageField("Превью", upload_to='Cases/', blank=True)
     title_ru = models.CharField('Название проекта', max_length=30)
     title_eng = models.CharField('Название проекта на английском', max_length=30)
@@ -69,7 +69,7 @@ class Case(models.Model):
     price_usd = models.IntegerField('Цена в $', blank=False)
     Style_ru = models.CharField('Стиль проекта', max_length=30)
     style_eng = models.CharField('Стиль проекта на английском', max_length=30)
-    year = models.IntegerField('Год проекта', choices=year_choices, default=current_year())
+    year = models.IntegerField('Год проекта', choices=year_choices(), default=current_year())
     areas = models.ManyToManyField(Area, verbose_name='Площади', blank=False)
     project_plan = models.ImageField("План проекта", upload_to='Cases/', blank=True)
 
@@ -86,7 +86,7 @@ class Review(models.Model):
     title_ru = models.CharField('Должность', max_length=30)
     title_eng = models.CharField('Должность на английском', max_length=30)
     image = models.ImageField("Фото клиента", upload_to='Clients/', blank=True)
-    project = models.ForeignKey('Проект', Case, blank=True)
+    project = models.ForeignKey(Case, verbose_name='Проект', blank=True, on_delete=models.CASCADE)
     review_title_ru = models.CharField('Заголовок отзыва', blank=False, max_length=30)
     review_body_ru = models.TextField('Отзыв', blank=False)
     review_title_eng = models.CharField('Заголовок отзыва на англипйском', blank=False, max_length=30)
