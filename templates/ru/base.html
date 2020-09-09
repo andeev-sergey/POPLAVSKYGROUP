@@ -1,0 +1,67 @@
+{% load static %}
+<!doctype html>
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style/master.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
+    <title>Poplavsky Group</title>
+</head>
+<body>
+<header>
+    <a href="{% url 'main' %}" alt="LOGO" class="logo">
+        <img class="logo" src="{% static 'img/Logo.svg' %}" alt="">
+    </a>
+    <div class="menu-button">
+        <div class="icon"></div>
+        <span>Меню</span>
+
+    </div>
+    <div class="menu">
+        <ul>
+            <li class="active"><a href="">Главная</a></li>
+            <li><a href="">Портфолио</a></li>
+            <li><a href="">Услуги и цены </a></li>
+            <li><a href="">Заказать проект </a></li>
+            <li><a href="">О нас</a></li>
+            <li><a href="">Контакты</a></li>
+        </ul>
+        <div class="lang"><span class="active">Рус</span><span>Eng</span></div>
+    </div>
+    <a href="#" class="button-1">Заказать звонок</a>
+
+    <div class="links">
+        <div class="link">
+            <a href="tel:+79992223344">+7 910 345 29 64</a>
+            <small>Для заказчиков</small>
+        </div>
+        <div class="link">
+            <a href="tel:+79992223344">+7 473 254 54 43</a>
+            <small>Наш офис</small>
+        </div>
+        <div class="link">
+            <a href="mailto:poplavskyAG@yandex.ru">poplavskyAG@yandex.ru</a>
+            <small>Почта</small>
+        </div>
+    </div>
+</header>
+{% block content %}
+
+{% endblock %}
+<footer>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+<script src="{% static 'js/master.js' %}" charset="utf-8"></script>
+</body>
+
+</html>

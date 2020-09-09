@@ -41,7 +41,6 @@ body {
 
 a.button-1 {
   display: inline-block;
-  font-family: "Monteserat", sans-serif;
   font-size: 15px;
   font-style: normal;
   font-weight: bold;
@@ -77,7 +76,7 @@ a.button-1:hover:active:before {
 
 a.button-2 {
   display: inline-block;
-  font-family: "Monteserat", sans-serif;
+  font-family: "Monteserat";
   font-size: 15px;
   font-style: normal;
   font-weight: bold;
@@ -103,7 +102,7 @@ a.button-2:active {
 
 a.circle-button {
   display: inline-block;
-  font-family: "Monteserat", sans-serif;
+  font-family: "Monteserat";
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
@@ -147,7 +146,7 @@ a.circle-button:hover:active:before {
 
 a.large-button {
   display: inline-block;
-  font-family: "Monteserat", sans-serif;
+  font-family: "Monteserat";
   font-size: 16px;
   font-style: normal;
   font-weight: bold;
@@ -195,7 +194,7 @@ a.large-button:active {
 }
 
 input.field {
-  font-family: "Monteserat", sans-serif;
+  font-family: "Monteserat";
   font-style: normal;
   font-weight: normal;
   font-size: 16px;

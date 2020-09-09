@@ -1,0 +1,887 @@
+// FONTS
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap')
+@font-face
+  font-family: '2MASS J1808'
+  src: url('fonts/2MASSJ1808-Heavy.eot')
+  src: local("2MASS J1808 Heavy"), local("2MASSJ1808-Heavy"), url('fonts/2MASSJ1808-Heavy.eot?#iefix') format("embedded-opentype"), url('fonts/2MASSJ1808-Heavy.woff2') format("woff2"), url('fonts/2MASSJ1808-Heavy.woff') format("woff"), url('fonts/2MASSJ1808-Heavy.ttf') format("truetype")
+  font-weight: 900
+  font-style: normal
+
+@font-face
+  font-family: '2MASS J1808'
+  src: url('fonts/2MASSJ1808-Normal.eot')
+  src: local("2MASS J1808 Normal"), local("2MASSJ1808-Normal"), url('fonts/2MASSJ1808-Normal.eot?#iefix') format("embedded-opentype"), url('fonts/2MASSJ1808-Normal.woff2') format("woff2"), url('fonts/2MASSJ1808-Normal.woff') format("woff"), url('fonts/2MASSJ1808-Normal.ttf') format("truetype")
+  font-weight: normal
+  font-style: normal
+
+$monteserat: 'Monteserat', sans-serif
+// 400 or 700 or 900
+$two_mass: '2MASS J1808', sans-serif
+// 900 or normal
+
+
+//COLORS
+$white: #F4F4F4
+$red: #DA2525
+$dark-red: #9A1212
+$back: #242424
+
+// CSS RESET
+*,
+*::before,
+*::after
+  box-sizing: border-box
+  -webkit-tap-highlight-color: transparent
+
+ul[class],
+ol[class]
+  padding: 0
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd
+  margin: 0
+  padding: 0
+  font-family: 'Montserrat'
+  -webkit-tap-highlight-color: transparent
+
+body
+  min-height: 100vh
+  scroll-behavior: smooth
+  text-rendering: optimizeSpeed
+  line-height: 1.5
+
+ul[class],
+ol[class]
+  list-style: none
+
+a:not([class])
+  text-decoration-skip-ink: auto
+
+img
+  max-width: 100%
+  display: block
+  width: 100%
+
+a
+
+
+input,
+button,
+textarea,
+select
+  font: inherit
+
+@media (prefers-reduced-motion: reduce)
+  *
+    animation-duration: 0.01ms !important
+    animation-iteration-count: 1 !important
+    transition-duration: 0.01ms !important
+    scroll-behavior: auto !important
+
+//RESPONSE MIXINS
+@mixin _1600
+  @media (max-width: 1600px)
+    @content
+
+@mixin _1500
+  @media (max-width: 1500px)
+    @content
+
+@mixin _1366
+  @media (max-width: 1366px)
+    @content
+
+@mixin _1440
+  @media (max-width: 1440px)
+    @content
+
+
+@mixin _1200
+  @media (max-width: 1200px)
+    @content
+
+@mixin _480
+  @media (max-width: 480px)
+    @content
+
+@mixin _979
+  @media (max-width: 979px)
+    @content
+
+
+@mixin _768
+  @media (max-width: 768px)
+    @content
+
+
+@mixin _700
+  @media (max-width: 700px)
+    @content
+
+@mixin _375
+  @media (max-width: 375px)
+    @content
+
+@mixin _350
+  @media (max-width: 350px)
+    @content
+
+@mixin _320
+  @media (max-width: 320px)
+    @content
+
+
+// ELEMENTS and ELEMENTS MIXINS
+
+a.button-1
+  display: inline-block
+  //font-family: $monteserat
+  font-size: 15px
+  font-style: normal
+  font-weight: 700
+  letter-spacing: 0.08em
+  color: $white
+  text-decoration: none
+  height: 45px
+  padding: 11.5px 26px 13.5px
+
+  letter-spacing: 0.08em
+  position: relative
+  transform-style: preserve-3d
+  @include _1366
+    font-size: 14px
+    height: 40px
+    padding: 8.5px 26px 10.5px
+
+  &:before
+    transform: translateZ(-1px)
+    content: ''
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    height: 100%
+    width: 50%
+    background: $red
+    transition: .3s
+
+  &:hover
+    &:before
+      width: 100%
+
+    &:active:before
+      background: $dark-red
+
+
+a.button-2
+  display: inline-block
+  font-family: $monteserat
+  font-size: 15px
+  font-style: normal
+  font-weight: bold
+  letter-spacing: 0.08em
+  color: $white
+  text-decoration: none
+  padding: 13.5px 80px 13.5px 26px
+  position: relative
+  transform-style: preserve-3d
+  border: 2px solid #DA2525
+  letter-spacing: 0.08em
+  background: url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
+  transition: .3s
+
+  &:hover
+    background: $red url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
+
+  &:active
+    background: $dark-red url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
+    border: 2px solid $dark-red
+
+
+a.circle-button
+  display: inline-block
+  font-family: $monteserat
+  font-size: 15px
+  font-style: normal
+  font-weight: 500
+  color: $white
+  text-decoration: none
+  transform-style: preserve-3d
+  width: 122px
+  text-align: center
+  letter-spacing: 0.25em
+  text-transform: uppercase
+  -webkit-appearance: none
+
+  &:before
+    transform: translateZ(-1px)
+    content: ''
+    display: block
+    position: absolute
+    top: -50px
+    left: 0px
+    height: 122px
+    width: 122px
+    border-radius: 50%
+    border: solid 3px $red
+    transition: .3s
+    pointer-events: none
+
+  &:hover
+    &:before
+      transform: scale(1.4)
+
+    &:active
+      &:before
+        transform: scale(.79)
+
+a.large-button
+  display: inline-block
+  font-family: $monteserat
+  font-size: 16px
+  font-style: normal
+  font-weight: bold
+  line-height: 20px
+  letter-spacing: 0.08em
+  color: $white
+  text-decoration: none
+  transform-style: preserve-3d
+  padding: 17px 35px
+  width: 582px
+  border: 2px solid #DA2525
+  background: url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat
+  transition: .3s
+
+  &:hover
+    background: $red url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat
+
+  &:active
+    background: $dark-red url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat
+    border: 2px solid $dark-red
+
+
+.social-links
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  justify-items: center
+  align-items: center
+  grid-gap: 65px
+
+  a
+    .link-image
+      transition: .3s
+
+    &:hover
+      .link-image
+        fill: $white
+        opacity: 1
+
+    &:active
+      .link-image
+        fill: $red
+        opacity: 1
+
+input.field
+  font-family: $monteserat
+  font-style: normal
+  font-weight: normal
+  font-size: 16px
+  line-height: 145%
+  letter-spacing: 0.04em
+  width: 582px
+  background: $back
+  padding-bottom: 10px
+  border-color: transparent
+  border-bottom: solid 1px rgba($white, 0.4)
+  transition: .3s
+  color: $white
+
+  &:focus
+    outline: none
+    border-bottom: solid 1px $red
+    caret-color: $red
+
+    color: #F4F4F4
+// STYLES BASE TEMPLATE
+body, html
+  max-width: 100vw
+  overflow-x: hidden
+  min-width: 320px
+  background: #242424
+  width: 100vw
+  position: relative
+
+.content
+  margin-top: 85px
+  color: white
+  @include _768
+    margin-top: 35px
+
+
+section
+  padding: 0 calc(50vw - 720px)
+  min-width: 100%
+  box-sizing: border-box
+  position: relative
+  @include _1500
+    padding: 0 30px
+    @include _768
+      padding: 0 15px
+
+  h1.section
+    font-family: $two_mass
+    font-style: normal
+    font-weight: 900
+    font-size: 48px
+    letter-spacing: 0.1em
+    text-transform: uppercase
+    margin-bottom: 45px
+    @include _1366
+      font-size: 24px
+      @include _768
+        font-size: 18px
+        margin-bottom: 20px
+
+.menu
+  position: absolute
+  display: grid
+  padding: 35px 0px
+  top: 50px
+  background: rgba(36, 36, 36, 0.6)
+  backdrop-filter: blur(70px)
+  width: 292px
+  height: 548px
+  opacity: 0
+  pointer-events: none
+  transition: .3s
+
+  ul
+    margin-top: 12px
+    padding: 0
+    display: grid
+    justify-items: start
+    align-items: center
+    user-select: none
+    align-content: flex-start
+
+    li
+      padding: 6px 6px 6px 40px
+      margin-top: 12px
+      position: relative
+      list-style: none
+      box-sizing: border-box
+      float: left
+      transform-style: preserve-3d
+
+      &:before
+        content: ''
+        transform: translateZ(-1px)
+        position: absolute
+        display: block
+        height: 100%
+        width: 75%
+        top: 0
+        left: 0
+        background: $red
+        opacity: 0
+        transition: .3s
+
+      &.active
+        &:before
+          opacity: 1
+
+        &:hover
+          &:before
+            width: 100%
+
+      &:active
+        &:before
+          background: $dark-red
+
+      a
+        color: $white
+        text-decoration: none
+        font-family: Montserrat
+        font-style: normal
+        font-weight: bold
+        font-size: 16px
+        line-height: 20px
+        letter-spacing: 0.08em
+
+  .lang
+    align-self: end
+    margin-left: 40px
+
+    span
+      font-family: Montserrat
+      font-style: normal
+      font-weight: bold
+      font-size: 16px
+      line-height: 20px
+      letter-spacing: 0.08em
+      opacity: 0.3
+      color: #F4F4F4
+      margin-right: 15px
+
+      &.active
+        opacity: 1
+
+  &.active
+    pointer-events: all
+    opacity: 1
+    animation: fadefromtop .5s
+    top: 90px
+
+
+.frame
+  background: url("/static/img/Rectangle%202.png") no-repeat
+  background-size: cover
+  height: 960px
+  display: grid
+  align-content: end
+  overflow: hidden
+  box-sizing: border-box
+  width: 100vw
+  min-width: 320px
+  padding: 0 calc(50vw - 720px)
+  @include _1500
+    padding-left: 30px
+  @include _1366
+    height: 768px
+  @include _979
+    height: 550px
+    padding-bottom: 0
+    padding-left: 15px
+
+  .rectangle
+    position: absolute
+    width: 1098px
+    height: 129px
+    left: 0px
+    display: grid
+    justify-items: start
+    align-items: center
+    grid-template-columns: repeat(3, 1fr)
+    top: 309px
+    padding-left: calc(50vw - 720px)
+    background: rgba(36, 36, 36, 0.1)
+    backdrop-filter: blur(25px)
+    @include _1500
+      padding-left: 30px
+    @include _1366
+      width: 724px
+
+    @include _979
+      top: 220px
+
+    @include _768
+
+      grid-template-columns: 1fr
+      padding: 30px 15px
+      top: 119px
+      width: 203px
+      height: 260px
+
+    .area
+      font-size: 18px
+      line-height: 145%
+      color: $white
+      display: inline-block
+      padding-left: 25px
+      position: relative
+      @include _1366
+        font-size: 14px
+
+      &:before
+        content: ''
+        display: block
+        position: absolute
+        width: 6px
+        height: 50px
+        top: 0
+        left: 0
+        background: $red
+        @include _1366
+          top: -5px
+
+  .main-text
+    margin-bottom: 100px
+    @include _1366
+      margin-bottom: 60px
+    @include _979
+      margin-bottom: 45px
+
+    h1
+      font-family: $two_mass
+      color: white
+      font-size: 64px
+      font-weight: 900
+      @include _979
+        font-size: 21px
+
+    h2
+      font-family: Montserrat
+      font-size: 18px
+      line-height: 16px
+      font-weight: 600
+      color: white
+      padding-bottom: 25px
+      position: relative
+      @include _979
+        font-size: 12px
+
+      &:before
+        content: ''
+        display: block
+        width: 214px
+        height: 5px
+        position: absolute
+        bottom: 0
+        left: 0
+        background: $red
+        @include _1366
+          left: -30px
+
+  .links
+    margin-bottom: 55px
+    @include _768
+      display: none
+
+    svg
+      margin-bottom: -4px
+
+    a
+      font-family: Montserrat
+      font-weight: normal
+      font-size: 15px
+      line-height: 18px
+      letter-spacing: 0.2em
+      color: $white
+      text-decoration: none
+
+      &:not(:last-child)
+        margin-right: 45px
+
+      &:not(:first-child)
+        margin-left: 45px
+
+  .scroll-more
+    position: absolute
+    cursor: pointer
+    right: calc(50vw - 720px)
+    bottom: 150px
+    animation: fadein 1s ease-in
+    @include _1500
+      right: 30px
+    @include _1366
+      display: none
+
+
+header
+  box-sizing: border-box
+  display: grid
+  height: 80px
+  position: absolute
+  align-items: center
+  justify-items: center
+  top: 40px
+  width: 100vw
+  min-width: 320px
+  padding: 0 calc(50vw - 720px)
+  grid-template-columns: 220px 1fr 1fr auto
+  z-index: 100
+  grid-column-gap: 20px
+  @include _1366
+    padding: 0 30px
+    grid-template-columns: repeat(4, auto)
+    grid-column-gap: 0
+    a.button-1
+      justify-self: end
+      @include _700
+        display: none
+  @include _768
+    grid-template-columns: 220px 1fr 1fr
+  @include _700
+    grid-template-columns: 1fr 1fr
+    padding: 0 15px
+    top: 0
+
+  a.logo
+    justify-self: start
+
+  img.logo
+    width: 194px
+    transform: translateY(-5px)
+    @include _1366
+      width: 154px
+    @include _700
+      width: 100px
+
+  .menu-button
+    position: relative
+    display: inline-grid
+    align-items: center
+    grid-template-columns: 37px 75px
+    grid-column-gap: 16px
+    cursor: pointer
+    @include _700
+      justify-self: end
+      grid-template-columns: 24px auto
+      grid-gap: 10px
+
+    span
+      color: $white
+      font-weight: 600
+      font-size: 21px
+      user-select: none
+      letter-spacing: 0.08em
+      @include _1366
+        font-size: 18px
+      @include _700
+        font-size: 15px
+
+    .icon
+      border-radius: 50%
+      width: 37px
+      height: 37px
+      background: $white
+      position: relative
+      @include _700
+        height: 24px
+        width: 24px
+
+      &:before, &:after
+        content: ''
+        position: absolute
+        display: block
+        background: black
+        height: 16px
+        top: 8px
+        left: 18px
+        transition: .3s
+        width: 1.7px
+        @include _700
+          left: 11.5px
+          width: 1px
+          height: 13px
+
+      &:before
+        transform: rotate(90deg)
+        @include _700
+          top: 4px
+
+      &:after
+        transform: rotate(-90deg)
+        top: 15px
+        @include _700
+          top: 9px
+
+    &.active
+      .icon
+        &:before
+          transform: rotate(45deg)
+          top: 10px
+          height: 19px
+          @include _700
+            top: 4px
+            height: 16px
+
+        &:after
+          transform: rotate(-45deg)
+          top: 10px
+          height: 19px
+          @include _700
+            top: 4px
+            height: 16px
+
+  .links
+    @include _768
+      display: none
+
+    .link
+      align-content: center
+      display: inline-grid
+      justify-self: end
+
+      &:not(:first-child)
+        margin-left: 46px
+        @include _1366
+          margin-left: 10px
+          display: none
+
+      a
+        font: $monteserat
+        color: $white
+        font-weight: 600
+        text-decoration: none
+        letter-spacing: 0.08em
+        font-size: 16px
+
+        line-height: 28px
+        @include _1366
+          font-size: 14px
+          line-height: 17px
+
+      small
+        color: $white
+        font-size: 12px
+        font: $monteserat
+
+
+@keyframes fadein
+  0%
+    opacity: 0
+    transform: translateY(-30px)
+  70%
+    opacity: .9
+    transform: translateY(5px)
+  100%
+    opacity: 1
+    transform: translateY(0px)
+
+@mixin breakpoints_text($desktop, $laptop, $mobile)
+  font-size: $desktop
+  @include _1366
+    font-size: $laptop
+    @include _768
+      font-size: $mobile
+
+.portfolio
+  display: grid
+  background: url("img/Архитектура.svg") repeat-x 10% 45%
+  padding-bottom: 129px
+  @include _768
+    background: none
+  @include _480
+    padding-bottom: 120px
+
+  .category
+    margin-left: 123px
+    margin-bottom: calc(105px - 2em)
+    @include _1366
+      margin-left: 90px
+    @include _979
+      margin-left: 0
+      margin-bottom: 0
+
+    .items
+      float: left
+      display: block
+      margin-bottom: 25px
+      @include _768
+        margin-bottom: 10px
+
+      a
+        display: inline-block
+        @include breakpoints_text(18px, 16px, 14px)
+        font-family: Montserrat
+        font-style: normal
+        font-weight: 500
+        line-height: 125%
+        text-decoration: none
+        color: $white
+        position: relative
+        padding-bottom: 25px
+        transition: .3s
+
+        &:before
+          content: ''
+          position: absolute
+          height: 2px
+          width: 0%
+          background: $red
+          bottom: 0
+          left: 0
+          opacity: 0
+          transition: .5s
+          @include _768
+            bottom: -10px
+          @include _480
+            &:not(:last-child)
+              content: none
+
+        @include _979
+          margin-bottom: 15px
+        @include _768
+          padding-bottom: 0
+          @include _480
+            &:last-child:before
+              opacity: 1
+              width: 20px
+              bottom: -25px
+
+        &:not(:last-child)
+          margin-right: 75px
+          @include _1200
+            margin-right: 16px
+
+
+        &.active
+          color: $red
+
+          &:before
+            width: 20%
+            opacity: 1
+            @include _480
+              opacity: 0
+
+        &:not(:last-child).active:before
+          @include _480
+            opacity: 0
+
+    .text
+      float: left
+      margin-top: 25px
+      font-family: Montserrat
+      font-style: normal
+      font-weight: normal
+      @include breakpoints_text(15px, 14px, 14px)
+      line-height: 145%
+      letter-spacing: 0.04em
+      color: #B1B1B1
+      max-width: 1073px
+
+      p
+        margin-bottom: 1.5em
+
+  .images-grid
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    justify-items: center
+    align-items: center
+    grid-gap: 22px
+
+    span
+      display: none
+
+    @include _768
+      display: block
+      max-width: calc(100vw + 30px)
+      height: 100px
+      position: relative
+      span
+        display: block
+        pointer-events: none
+        width: 10vw
+        height: 50px
+        @include _350
+          width: 30vw
+      img
+        margin-right: 7px
+        width: 50vw
+      a.circle-button
+
+        margin: 50px 70px 40px 40px
+
