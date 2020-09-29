@@ -247,10 +247,11 @@ a.circle-button
       &:before
         transform: scale(.79)
 
-a.large-button
+.large-button
   display: inline-block
   font-family: $monteserat
   font-size: 16px
+  text-align: left
   font-style: normal
   font-weight: bold
   line-height: 20px
@@ -261,14 +262,14 @@ a.large-button
   padding: 17px 35px
   width: 582px
   border: 2px solid #DA2525
-  background: url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat
+  background: url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
   transition: .3s
 
   &:hover
-    background: $red url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat
+    background: $red url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
 
   &:active
-    background: $dark-red url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat
+    background: $dark-red url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
     border: 2px solid $dark-red
 
 
@@ -323,22 +324,25 @@ body, html
   width: 100vw
   position: relative
 
+  &.fixed
+    overflow: hidden
+
 .content
-  margin-top: 85px
   color: white
   @include _768
     margin-top: 35px
 
 
 section
-  padding: 0 calc(50vw - 720px)
+  padding: 94px calc(50vw - 720px) 125px
   min-width: 100%
   box-sizing: border-box
   position: relative
+  min-height: 100px
   @include _1500
-    padding: 0 30px
+    padding: 20px 30px
     @include _768
-      padding: 0 15px
+      padding: 10px 15px
 
   h1.section
     font-family: $two_mass
@@ -347,9 +351,10 @@ section
     font-size: 48px
     letter-spacing: 0.1em
     text-transform: uppercase
-    margin-bottom: 45px
+    margin-bottom: 64px
     @include _1366
       font-size: 24px
+      margin-bottom: 40px
       @include _768
         font-size: 18px
         margin-bottom: 20px
@@ -382,7 +387,7 @@ section
       position: relative
       list-style: none
       box-sizing: border-box
-      float: left
+      width: 100%
       transform-style: preserve-3d
 
       &:before
@@ -391,7 +396,7 @@ section
         position: absolute
         display: block
         height: 100%
-        width: 75%
+        width: 35%
         top: 0
         left: 0
         background: $red
@@ -404,7 +409,7 @@ section
 
         &:hover
           &:before
-            width: 100%
+            width: calc(100% - 40px)
 
       &:active
         &:before
@@ -437,6 +442,10 @@ section
 
       &.active
         opacity: 1
+        cursor: default
+
+      &:not(.active)
+        cursor: pointer
 
   &.active
     pointer-events: all
@@ -603,7 +612,7 @@ header
   grid-template-columns: 220px 1fr 1fr auto
   z-index: 100
   grid-column-gap: 20px
-  @include _1366
+  @include _1500
     padding: 0 30px
     grid-template-columns: repeat(4, auto)
     grid-column-gap: 0
@@ -761,11 +770,10 @@ header
 .portfolio
   display: grid
   background: url("img/Архитектура.svg") repeat-x 10% 45%
-  padding-bottom: 129px
   @include _768
     background: none
   @include _480
-    padding-bottom: 120px
+    padding-bottom: 140px
 
   .category
     margin-left: 123px
@@ -868,9 +876,7 @@ header
 
     @include _768
       display: block
-      max-width: calc(100vw + 30px)
-      height: 100px
-      position: relative
+      max-width: calc(100vw - 30px)
       span
         display: block
         pointer-events: none
@@ -880,8 +886,288 @@ header
           width: 30vw
       img
         margin-right: 7px
-        width: 50vw
+        width: calc(50vw - 7px)
+      .slide
+        margin-right: 7px
+        width: calc(50vw - 7px)
+        display: grid
+        justify-items: center
+        align-items: center
+
       a.circle-button
+        align-self: center
 
-        margin: 50px 70px 40px 40px
+.prices
+  background: url("/static/img/ef150e95289907 1.png")
+  background-size: cover
+  @include _768
+    padding-bottom: 130px
 
+  .cards
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    grid-column-gap: 20px
+    justify-items: stretch
+    @include _1366
+      grid-template-columns: repeat(2, 1fr)
+      //justify-items: center
+      grid-gap: 20px
+      display: flex
+      flex-flow: row wrap
+      justify-content: space-around
+
+    @include _768
+      display: block
+      height: 462px
+
+    .card
+      display: grid
+      height: 536px
+      max-width: 345px
+      align-items: start
+      align-content: start
+      position: relative
+      transition: all .3s
+
+      &:not(:first-child)
+        border-left: 1px solid rgba(#F4F4F4, .3)
+      border-right: 1px solid rgba(#F4F4F4, .3)
+      @include _768
+        height: 462px
+        width: calc(100vw - 31px)
+        max-width: 100%
+        margin: 15px
+        &:first-child
+          border-left: 1px solid rgba(#F4F4F4, .3)
+
+      img
+        max-height: 160px
+        position: absolute
+        top: 0
+        width: 100%
+        opacity: 0
+        transform: translateY(-20px)
+        transition: .5s
+
+      h3.title
+        font-family: Montserrat
+        font-style: normal
+        font-weight: 500
+        font-size: 16px
+        line-height: 125%
+        margin: 0 32px 32px
+        color: $white
+        transition: all .35s
+        @include _768
+          margin: 0 25px 25px
+
+      p
+        margin: 0 32px
+        @include breakpoints_text(15px, 15px, 14px)
+        color: #B1B1B1
+        @include _768
+          margin: 0 25px
+
+      a.more
+        position: absolute
+        bottom: 80px
+        left: 32px
+        text-decoration: none
+        color: $red
+        text-transform: uppercase
+        font-size: 14px
+        transition: .2s
+        align-self: center
+        @include _768
+          bottom: 30px
+
+      span.num
+        margin: 72.5px 32px
+        font-family: Montserrat
+        font-style: normal
+        font-weight: 600
+        font-size: 15px
+        line-height: 15px
+        letter-spacing: 0.04em
+        position: relative
+        justify-self: start
+        transition: .3s
+
+        &:after
+          content: ''
+          display: block
+          position: absolute
+          bottom: -4px
+          left: 0
+          width: 100%
+          background: $red
+          height: 3px
+
+      @media (min-width: 768px)
+        &.active
+          a.more
+            bottom: 40px
+
+          h3.title
+            color: $red
+            margin: 32px
+
+          span.num
+            transform: translateY(30px)
+            opacity: 0
+
+          img
+            transform: translateY(0px)
+            opacity: 1
+            @include _768
+              display: none
+
+  ul.slick-dots
+    text-align: left
+    bottom: -100px
+
+    li
+      display: inline-block
+      width: calc(19% - 15px)
+      background: #4f4f4f
+      height: 4px
+      margin: 4px
+      transition: all .3s
+
+      &.slick-active
+        width: 43%
+        background: $red
+
+.exp
+  position: relative
+  overflow: hidden
+
+  h1.section
+    margin-bottom: 122px
+    @include _480
+      margin-bottom: 45px
+
+  svg.clip
+    position: absolute
+    top: 94px
+    right: 0
+    margin-right: calc(50vw - 720px)
+    z-index: 1
+    transform: translateX(35px)
+    @include _1500
+      margin-right: 20px
+      top: -10px
+      width: 150px
+      right: 30px
+    @include _480
+      display: none
+
+  .q
+    width: 100%
+    display: block
+    height: fit-content
+    box-sizing: border-box
+
+    .question
+      display: inline-grid
+      float: right
+      width: 459px
+      margin-left: 75px
+      margin-bottom: 55px
+      height: 230px
+
+      &:nth-child(1)
+        width: 558px
+
+      @include _979
+        float: left
+        width: 60%
+        margin-left: 0
+        margin-bottom: 45px
+        height: auto
+
+        &:nth-child(2)
+          width: 80%
+        &:nth-child(1)
+          width: 60%
+      @include _480
+        width: 100%
+        &:nth-child(1), &:nth-child(2)
+          width: 100%
+
+      h2.title
+        padding-bottom: 25px
+        margin-bottom: 25px
+        position: relative
+        @include breakpoints_text(34px, 24px, 18px)
+
+        &:after
+          content: ''
+          position: absolute
+          height: 5px
+          width: 100%
+          background: $red
+          bottom: 0
+          left: 0
+
+      p
+        @include breakpoints_text(15px, 15px, 14px)
+        color: #B1B1B1
+
+.overlay
+  position: fixed
+  left: 0
+  top: 0
+  width: 100vw
+  height: 100vh
+  z-index: -1
+  transition: .3s
+  &.active
+    z-index: 100
+    background: rgba(#000, .3)
+    backdrop-filter: blur(10px)
+.modal
+  position: fixed
+  display: grid
+  align-items: start
+  align-content: start
+  display: none
+  opacity: 0
+  z-index: 150
+  &#call
+    width: 545px
+    height: 630px
+    background: #242424
+    top: 10vh
+    left: calc(100vh - 272.5px)
+    padding: 55px 45px
+  &.active
+    display: grid
+    h3
+      font-family: "2MASS J1808", sans-serif
+      font-style: normal
+      font-weight: 900
+      font-size: 24px
+      line-height: 32px
+      letter-spacing: 0.1em
+      text-transform: uppercase
+      color: $white
+      margin-bottom: 75px
+
+    input
+      width: 100%
+      margin-bottom: 25px
+      &::placeholder
+        color: $white
+        font-family: Montserrat
+        font-style: normal
+        font-weight: normal
+        font-size: 16px
+        line-height: 145%
+        /* or 23px */
+        letter-spacing: 0.04em
+    .large-button
+      width: calc(100% - 90px)
+      position: absolute
+      bottom: 65px
+      left: 45px

@@ -9,9 +9,7 @@
     width: 100%;
 }
 
-.change-list .hiddenfields {
-    display: none;
-}
+.change-list .hiddenfields { display:none; }
 
 .change-list .filtered table {
     border-right: none;
@@ -32,7 +30,7 @@
 }
 
 #changelist-form .results {
-    overflow-x: auto;
+  overflow-x: auto;
 }
 
 #changelist .toplinks {
@@ -157,7 +155,6 @@
 
 #changelist-filter ul:last-child {
     border-bottom: none;
-    padding-bottom: none;
 }
 
 #changelist-filter li {
@@ -187,6 +184,12 @@
 #changelist-filter li.selected a:focus,
 #changelist-filter li.selected a:hover {
     color: #036;
+}
+
+#changelist-filter #changelist-filter-clear a {
+    font-size: 13px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eaeaea;
 }
 
 /* DATE DRILLDOWN */
@@ -234,7 +237,6 @@
 }
 
 .paginator a.showall {
-    padding: 0;
     border: none;
     background: none;
     color: #5b80b2;

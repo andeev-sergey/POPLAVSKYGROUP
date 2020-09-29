@@ -37,6 +37,7 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   grid-row-gap: 100px;
+  background: red;
 }
 
 a.button-1 {
@@ -52,7 +53,6 @@ a.button-1 {
   position: relative;
   transform-style: preserve-3d;
 }
-
 a.button-1:before {
   transform: translateZ(-1px);
   content: "";
@@ -65,11 +65,9 @@ a.button-1:before {
   background: #DA2525;
   transition: 0.3s;
 }
-
 a.button-1:hover:before {
   width: 100%;
 }
-
 a.button-1:hover:active:before {
   background: #9A1212;
 }
@@ -90,11 +88,9 @@ a.button-2 {
   background: url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat;
   transition: 0.3s;
 }
-
 a.button-2:hover {
   background: #DA2525 url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat;
 }
-
 a.button-2:active {
   background: #9A1212 url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat;
   border: 2px solid #9A1212;
@@ -114,7 +110,6 @@ a.circle-button {
   letter-spacing: 0.25em;
   text-transform: uppercase;
 }
-
 a.circle-button:before {
   transform: translateZ(-1px);
   content: "";
@@ -129,14 +124,12 @@ a.circle-button:before {
   transition: 0.3s;
   pointer-events: none;
 }
-
 a.circle-button:hover:before {
   top: -80.5px;
   left: -26px;
   height: 170px;
   width: 170px;
 }
-
 a.circle-button:hover:active:before {
   top: -43px;
   left: 9px;
@@ -161,11 +154,9 @@ a.large-button {
   background: url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat;
   transition: 0.3s;
 }
-
 a.large-button:hover {
   background: #DA2525 url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat;
 }
-
 a.large-button:active {
   background: #9A1212 url("img/arrow-right.svg") calc(582px - 59px) 50% no-repeat;
   border: 2px solid #9A1212;
@@ -178,16 +169,13 @@ a.large-button:active {
   align-items: center;
   grid-gap: 65px;
 }
-
 .links a .link-image {
   transition: 0.3s;
 }
-
 .links a:hover .link-image {
   fill: #F4F4F4;
   opacity: 1;
 }
-
 .links a:active .link-image {
   fill: #DA2525;
   opacity: 1;
@@ -208,7 +196,6 @@ input.field {
   transition: 0.3s;
   color: #F4F4F4;
 }
-
 input.field:focus {
   outline: none;
   border-bottom: solid 1px #DA2525;

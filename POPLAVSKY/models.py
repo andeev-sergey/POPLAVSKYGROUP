@@ -21,7 +21,6 @@ class BaseClass(models.Model):
         abstract = True
 
 
-# Create your models here.
 class SiteConfig(models.Model):
     phone = models.CharField('Телефон для заказчиков', max_length=16)
     phone_office = models.CharField('телефон офиса', max_length=16)

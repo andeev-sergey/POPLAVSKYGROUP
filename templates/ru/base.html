@@ -34,7 +34,7 @@
         </ul>
         <div class="lang"><span class="active">Рус</span><span>Eng</span></div>
     </div>
-    <a href="#" class="button-1">Заказать звонок</a>
+    <a href="#" data-link="call" class="button-1 open-modal">Заказать звонок</a>
 
     <div class="links">
         <div class="link">
@@ -57,7 +57,17 @@
 <footer>
 
 </footer>
-
+<div class="overlay"></div>
+<div class="modal" id="call">
+    <form action="">
+        <h3>ЗАКАЖИТЕ <br>КОНСУЛЬТАЦИЮ</h3>
+        <input type="text" class="field" placeholder="Ваше имя">
+        <input type="tel" pattern='^\+?\d{0,13}' class="field" placeholder="Ваш телефон">
+        <input type="email" class="field" placeholder="Ваша почта">
+        <input type="text" class="field" placeholder="Ваш вопрос">
+        <input type="submit"  class="large-button" value="Позвоните мне">
+    </form>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
 
 <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>

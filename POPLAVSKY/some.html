@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table border="1">
+  <tr>
+    <th>
+      Тема
+    </th>
+    <th>
+      Доставлено
+    </th>
+    <th>
+      Открыли
+    </th>
+    <th>
+      Кликнули
+    </th>
+  </tr>
+  <tr>
+    <td>
+      Тема 1
+    </td>
+    <td>
+      1000
+    </td>
+    <td>
+      200
+    </td>
+    <td>
+      25
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Тема 2
+    </td>
+    <td>
+      2000
+    </td>
+    <td>
+      400
+    </td>
+    <td>
+      15
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Итого
+    </th>
+    <th>
+
+    </th>
+    <th>
+
+    </th>
+    <th>
+
+    </th>
+  </tr>
+</table>
+<script>
+function column_sum(column_num){
+   column_num++;
+   let cells = document.querySelectorAll('table tr td:nth-child('+ column_num +')'),
+       column_sum = 0;
+
+   for (let i = 0; i < cells.length; i++) {
+       column_sum += Number(cells[i].innerHTML);
+   }
+   document.querySelector('table tr:last-child th:nth-child('+ column_num +')').innerHTML = column_sum;
+}
+
+for (let i = 0; i < 3; i++) {
+    column_sum(i+1);
+}
+
+
+</script>
+</body>
+</html>
