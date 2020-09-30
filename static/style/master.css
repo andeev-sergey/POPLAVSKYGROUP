@@ -197,7 +197,7 @@ a.circle-button:hover:active:before {
   text-decoration: none;
   transform-style: preserve-3d;
   padding: 17px 35px;
-  width: 582px;
+  width: 100%;
   border: 2px solid #DA2525;
   background: url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat;
   transition: 0.3s;
@@ -229,14 +229,14 @@ a.circle-button:hover:active:before {
   opacity: 1;
 }
 
-input.field {
+input.field, textarea.field {
   font-family: "Monteserat", sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 145%;
   letter-spacing: 0.04em;
-  width: 582px;
+  width: 100%;
   background: #242424;
   padding-bottom: 10px;
   border-color: transparent;
@@ -244,7 +244,7 @@ input.field {
   transition: 0.3s;
   color: #F4F4F4;
 }
-input.field:focus {
+input.field:focus, textarea.field:focus {
   outline: none;
   border-bottom: solid 1px #DA2525;
   caret-color: #DA2525;
@@ -1294,6 +1294,161 @@ header .links .link small {
   .exp .q .question p {
     font-size: 14px;
   }
+}
+.exp svg.circle-backgound {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+}
+
+section.connect h1.section {
+  margin-bottom: 125px;
+}
+@media (max-width: 768px) {
+  section.connect h1.section {
+    margin-bottom: 35px;
+  }
+}
+section.connect .pre-footer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: stretch;
+}
+@media (max-width: 1366px) {
+  section.connect .pre-footer {
+    grid-template-columns: 1fr;
+    grid-gap: 85px;
+    justify-items: start;
+  }
+}
+@media (max-width: 480px) {
+  section.connect .pre-footer {
+    justify-items: stretch;
+    grid-gap: 30px;
+  }
+}
+@media (max-width: 1366px) {
+  section.connect .pre-footer .info-block {
+    display: grid;
+    align-content: start;
+  }
+}
+section.connect .pre-footer .info-block p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 145%;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  section.connect .pre-footer .info-block p {
+    margin-bottom: 10px;
+  }
+}
+section.connect .pre-footer .info-block .contact {
+  display: inline-grid;
+  margin-right: 47px;
+  margin-top: 45px;
+}
+@media (max-width: 768px) {
+  section.connect .pre-footer .info-block .contact {
+    margin-top: 35px;
+  }
+}
+section.connect .pre-footer .info-block .contact label {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 145%;
+  letter-spacing: 0.04em;
+  color: #B1B1B1;
+  opacity: 0.4;
+  margin-bottom: 5px;
+}
+section.connect .pre-footer .info-block .contact a {
+  font-size: 15px;
+  line-height: 145%;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+  color: #F4F4F4;
+}
+section.connect .pre-footer .info-block .contact li {
+  font-size: 15px;
+  line-height: 145%;
+  /* identical to box height, or 22px */
+  letter-spacing: 0.04em;
+  color: #F4F4F4;
+}
+@media (max-width: 768px) {
+  section.connect .pre-footer .info-block .contact li {
+    margin-bottom: 10px;
+  }
+}
+section.connect .pre-footer .info-block .map {
+  margin-top: 55px;
+  min-width: 100%;
+}
+@media (max-width: 480px) {
+  section.connect .pre-footer .info-block .map {
+    height: 300px;
+  }
+}
+section.connect .pre-footer .callback {
+  display: grid;
+  justify-items: center;
+}
+@media (max-width: 768px) {
+  section.connect .pre-footer .callback {
+    justify-items: start;
+  }
+}
+section.connect .pre-footer .callback form {
+  margin-top: 7px;
+  width: 582px;
+  display: grid;
+  align-self: start;
+  align-content: start;
+}
+@media (max-width: 979px) {
+  section.connect .pre-footer .callback form {
+    width: 80vw;
+    justify-self: stretch;
+  }
+}
+@media (max-width: 480px) {
+  section.connect .pre-footer .callback form {
+    width: 100%;
+  }
+}
+section.connect .pre-footer .callback form label {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 145%;
+  letter-spacing: 0.04em;
+  color: #B1B1B1;
+  opacity: 0.4;
+  margin-bottom: 5px;
+  margin-left: 3px;
+}
+section.connect .pre-footer .callback form label:not(:first-child) {
+  margin-top: 45px;
+}
+section.connect .pre-footer .callback form .field {
+  width: 100%;
+  resize: none;
+}
+section.connect .pre-footer .callback form .field::placeholder {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 145%;
+  /* or 23px */
+  letter-spacing: 0.04em;
+  color: #F4F4F4;
+}
+section.connect .pre-footer .callback form textarea {
+  padding-bottom: 25px;
+  margin-bottom: 45px;
 }
 
 .overlay {
