@@ -264,7 +264,8 @@ a.circle-button
   border: 2px solid #DA2525
   background: url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
   transition: .3s
-
+  @include _700
+    font-size: 14px
   &:hover
     background: $red url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
 
@@ -748,6 +749,102 @@ header
         font-size: 12px
         font: $monteserat
 
+
+footer
+  display: grid
+  padding: 100px calc(50vw - 720px) 95px
+  grid-template-columns: 3fr 3fr 7fr
+  background: #1E1E1E
+  margin-top: 60px
+  @include _1500
+    padding: 60px 30px 95px
+  @include _1200
+    grid-template-columns: 1fr 1fr
+    grid-gap: 55px
+    justify-content: start
+  @include _768
+
+  @include _700
+    padding: 40px 15px
+    grid-template-columns: 1fr
+  a img
+    max-width: 200px
+  .footer-links
+    display: grid
+    align-content: start
+    @include _700
+      grid-template-columns: 1fr 1fr
+    a
+      font-family: Montserrat
+      font-weight: normal
+      font-size: 15px
+      line-height: 18px
+      letter-spacing: 0.2em
+      color: $white
+      text-decoration: none
+      padding-left: 45px
+      position: relative
+      @include _700
+        padding-left: 25px
+        font-size: 14px
+      &:not(:last-child)
+        margin-bottom: 25px
+      &:before
+        content: '/'
+        position: absolute
+        width: 3px
+        height: 100%
+        color: $red
+        top: 0
+        left: 0
+  .right-links
+    display: grid
+    grid-template-columns: repeat(3, 1fr)
+    align-content: start
+    @include _1200
+      grid-column: 1/3
+    @include _700
+      grid-template-columns: 1fr 1fr
+      grid-column: 1/2
+    a
+      font-style: normal
+      font-weight: normal
+      font-size: 15px
+      line-height: 18px
+      letter-spacing: 0.08em
+      color: $white
+      text-decoration: none
+      @include _700
+        font-size: 14px
+      &:nth-child(2n-1)
+        margin-bottom: 25px
+        @include _700
+          margin-bottom: 20px
+    span.policy
+      grid-column: 1/4
+      color: $red
+      position: relative
+      padding-left: 45px
+      @include _700
+        grid-column: 1/3
+        padding-left: 25px
+
+      a
+        font-style: normal
+        font-weight: bold
+        font-size: 15px
+        line-height: 100%
+        @include _700
+          font-size: 13px
+      margin-top: 40px
+      &:before
+        content: '/'
+        position: absolute
+        width: 3px
+        height: 100%
+        color: $red
+        top: 0
+        left: 0
 
 @keyframes fadein
   0%
@@ -1287,4 +1384,7 @@ section.connect
       position: absolute
       bottom: 65px
       left: 45px
+
+
+
 

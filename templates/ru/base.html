@@ -55,7 +55,28 @@
 
 {% endblock %}
 <footer>
+    <a href="{% url 'main' %}" alt="LOGO" class="logo">
+        <img class="logo" src="{% static 'img/Logo.svg' %}" alt="">
+    </a>
+    <div class="footer-links">
+        <a href="#">vkontakte</a>
 
+        <a href="#">instagram</a>
+
+        <a href="#">telegram</a>
+
+        <a href="#">Houzz</a>
+
+    </div>
+    <div class="right-links">
+        <a href="">Главная</a>
+        <a href="">Услуги и цены</a>
+        <a href="">О нас</a>
+        <a href="">Портфолио</a>
+        <a href="">Заказать проект</a>
+        <a href="">Контакты</a>
+        <span class="policy"><a href="">Privacy policy</a> & <a href="">Terms of Use</a></span>
+    </div>
 </footer>
 <div class="overlay"></div>
 <div class="modal" id="call">
@@ -65,9 +86,10 @@
         <input type="tel" pattern='^\+?\d{0,13}' class="field" placeholder="Ваш телефон">
         <input type="email" class="field" placeholder="Ваша почта">
         <input type="text" class="field" placeholder="Ваш вопрос">
-        <input type="submit"  class="large-button" value="Позвоните мне">
+        <input type="submit" class="large-button" value="Позвоните мне">
     </form>
 </div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
 
 <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
