@@ -1,0 +1,39 @@
+{% load static %}
+
+<header>
+    <a href="{% url 'main' %}" alt="LOGO" class="logo">
+        <img class="logo" src="{% static 'img/Logo.svg' %}" alt="">
+    </a>
+    <div class="menu-button">
+        <div class="icon"></div>
+        <span>Меню</span>
+
+    </div>
+    <div class="menu">
+        <ul>
+            <li class="active"><a href="">Главная</a></li>
+            <li><a href="{% url 'portfolio' %}">Портфолио</a></li>
+            <li><a href="{% url 'services' %}">Услуги и цены </a></li>
+            <li><a href="{% url 'contacts' %}">Заказать проект </a></li>
+            <li><a href="{% url 'about' %}">О нас</a></li>
+            <li><a href="{% url 'contacts' %}">Контакты</a></li>
+        </ul>
+        <div class="lang"><span class="active">Рус</span><span>Eng</span></div>
+    </div>
+    <a href="#" data-link="call" class="button-1 open-modal">Заказать звонок</a>
+
+    <div class="links">
+        <div class="link">
+            <a href="tel:+79992223344">+7 910 345 29 64</a>
+            <small>Для заказчиков</small>
+        </div>
+        <div class="link">
+            <a href="tel:+79992223344">+7 473 254 54 43</a>
+            <small>Наш офис</small>
+        </div>
+        <div class="link">
+            <a href="mailto:poplavskyAG@yandex.ru">poplavskyAG@yandex.ru</a>
+            <small>Почта</small>
+        </div>
+    </div>
+</header>

@@ -67,7 +67,7 @@ class Room(models.Model):
     room_descrition_eng = models.TextField('Описание комнаты на английском', max_length=500)
 
     def __str__(self):
-        return self.name_ru
+        return self.name_ru + ' ||| ' + self.room_descrition_ru
 
 
 class Case(BaseClass):
@@ -81,7 +81,7 @@ class Case(BaseClass):
     descrition_eng = models.TextField('Описание проекта на английском', max_length=500)
     price_rub = models.IntegerField('Цена в рублях', blank=False)
     price_usd = models.IntegerField('Цена в $', blank=False)
-    Style_ru = models.CharField('Стиль проекта', max_length=30)
+    style_ru = models.CharField('Стиль проекта', max_length=30)
     style_eng = models.CharField('Стиль проекта на английском', max_length=30)
     year = models.IntegerField('Год проекта', choices=year_choices(), default=current_year())
     areas = models.ManyToManyField(Area, verbose_name='Площади', blank=False)

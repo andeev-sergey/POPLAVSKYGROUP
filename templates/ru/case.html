@@ -1,0 +1,81 @@
+{% extends 'ru/base.html' %} {% load static %} {% block content %}
+{% include 'ru/bread.html' with variable=case.title_ru   %}
+    <section class="case">
+        <aside>
+            <h1 class="title">
+                {{ case.title_ru }}
+            </h1>
+            <p>{{ case.short_descrition_ru }}</p>
+            <span class="price">ОТ <span>{{ case.price_rub }} РУБ.</span></span>
+        </aside>
+        <div class="presentation">
+            <div class="controls">
+                <div class="attr"><span>Стиль</span> <h4>{{ case.style_ru }}</h4></div>
+                <div class="attr"><span>Год</span> <h4>{{ case.year }}</h4></div>
+                <div class="attr"><span>Локация</span> <h4>{{ case.location_ru }}</h4></div>
+                <div class="slider-nav">
+                    <img src="{% static 'img/arr-prev.svg' %}" alt="" class="prev">
+                    <img src="{% static 'img/arr-next.svg' %}" alt="" class="next">
+                </div>
+            </div>
+            <div class="images">
+                {% for room in case.rooms.all %}
+                    <div class="img-wrapper">
+                        <img class="slider-image" src="{{ room.image.url }}" alt="">
+                    </div>
+                {% endfor %}
+
+            </div>
+
+
+        </div>
+    </section>
+    <section class="plan">
+        <h2 class="plan">План квартиры</h2>
+        <div class="content">
+            <img src="{{ case.project_plan.url }}" alt="" class="plan">
+            <div class="areas">
+                {% for area in case.areas.all %}
+
+                    <div class="area">
+                        <span>{{ area.area_value }} м²</span>
+                        <h5>{{ area.name_ru }}</h5>
+                    </div>
+                {% endfor %}
+                <p class="description">{{ case.descrition_ru }}</p>
+
+            </div>
+        </div>
+    </section>
+    <section class="rooms">
+        <div class="slider-nav">
+            <img src="{% static 'img/arr-prev.svg' %}" alt="" class="prev">
+            <img src="{% static 'img/arr-next.svg' %}" alt="" class="next">
+        </div>
+        <div class="room-info">
+            <div class="room-slider">
+                {% for room in case.rooms.all %}
+                    <img src="{{ room.image.url }}" alt="">
+                {% endfor %}
+
+            </div>
+            <div class="text">
+                <div class="counter">
+                    <span class="active">1</span>
+                    <svg width="115" height="3" viewBox="0 0 115 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.2" width="115" height="3" fill="#F4F4F4"/>
+                    </svg>
+                    <span class="all"></span>
+                </div>
+                <h3 class="room-title">
+                    Кухня
+                </h3>
+                <p>Данный проект разработан для молодого человека. Заказчиком был выбран скандинавский стиль с добавлением небольшого количества классических элементов, что позволило разнообразить дизайн помещений, подчеркнув индивидуальность и характер клиента. </p>
+                <a href="" class="link">Рассчитать стоимость проекта</a>
+            </div>
+        </div>
+        {#    {% for foo in case.rooms.all %}#}
+        {#        <img style="width: 200px" src="{{ foo.image.url }}" alt="">#}
+        {#    {% endfor %}#}
+    </section>
+{% endblock %}

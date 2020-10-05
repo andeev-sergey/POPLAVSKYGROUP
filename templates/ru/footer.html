@@ -1,0 +1,25 @@
+{% load static %}
+<footer>
+    <a href="{% url 'main' %}" alt="LOGO" class="logo">
+        <img class="logo" src="{% static 'img/Logo.svg' %}" alt="">
+    </a>
+    <div class="footer-links">
+        <a href="#">vkontakte</a>
+
+        <a href="#">instagram</a>
+
+        <a href="#">telegram</a>
+
+        <a href="#">Houzz</a>
+
+    </div>
+    <div class="right-links">
+        <a href="{% url 'main' %}">Главная</a>
+        <a href="{% url 'services' %}">Услуги и цены</a>
+        <a href="{% url 'about' %}">О нас</a>
+        <a href="{% url 'portfolio' %}">Портфолио</a>
+        <a href="{% url 'contacts' %}">Заказать проект</a>
+        <a href="{% url 'contacts' %}">Контакты</a>
+        <span class="policy"><a href="">Privacy policy</a> & <a href="">Terms of Use</a></span>
+    </div>
+</footer>

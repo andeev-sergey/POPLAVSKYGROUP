@@ -1,0 +1,98 @@
+{% extends 'ru/base.html' %} {% load static %} {% block content %}
+    {% include 'ru/bread.html' with page='Портфолио' %}
+    <section class="portfolio-page">
+        <div class="category">
+
+            <div class="items">
+                <a href="" class="active">Архитектура</a>
+                <a href="">Интерьеры «B2C»</a>
+                <a href="">Коммерческие интерьеры «B2B»</a>
+                <a href="">Реализованные проекты</a>
+            </div>
+            <div class="text">
+                <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является
+                    стандартной "рыбой" для текстов на латинице с начала XVI века. </p>
+            </div>
+        </div>
+
+    </section>
+    <div class="portfolio-cards">
+     {% for case in cases %}
+        <div class="card">
+
+                <num class="card_number"></num>
+                {% if case.image %}
+                    <img src="{{ case.image.url }}" alt="">
+                    {% else %}
+                     <img src="{% static 'img/card.png' %}" alt="">
+                {% endif %}
+                <h3 class="title">{{ case.title_ru}}</h3>
+                <a href="{% url 'case' case.pk %}" class="more">подробнее</a>
+                </div>
+            {% endfor %}
+
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+        <div class="card">
+            <num class="card_number"></num>
+            <img src="{% static 'img/card.png' %}" alt="">
+            <h3 class="title">Название проекта номер первый</h3>
+            <a href="" class="more">подробнее</a>
+        </div>
+
+
+    </div>
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+{% endblock %}

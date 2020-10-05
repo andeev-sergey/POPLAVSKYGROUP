@@ -39,10 +39,9 @@ class CaseAdmin(admin.ModelAdmin):
 
     image_tag.short_description = 'Изображение'
 
-    list_display = (
-        'image_tag', 'title_ru', 'category', 'Style_ru', 'year', 'location_ru', 'price_rub', 'price_usd',
+    list_display = ( 'title_ru', 'category', 'style_ru', 'year', 'location_ru', 'price_rub', 'price_usd',
         'display_on_site')
-    list_editable = ('title_ru', 'display_on_site', 'category', 'year', 'price_rub', 'price_usd')
+    list_editable = ( 'display_on_site', 'category', 'year', 'price_rub', 'price_usd')
     filter_horizontal = ('areas', 'rooms',)
     list_filter = ('display_on_site', 'category',)
 

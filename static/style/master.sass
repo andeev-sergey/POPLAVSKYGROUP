@@ -15,10 +15,10 @@
   font-style: normal
 
 $monteserat: 'Monteserat', sans-serif
-// 400 or 700 or 900
 $two_mass: '2MASS J1808', sans-serif
-// 900 or normal
 
+$case_slider: 580px
+$lr_padding: calc(50vw - 720px)
 
 //COLORS
 $white: #F4F4F4
@@ -142,7 +142,11 @@ select
   @media (max-width: 320px)
     @content
 
+@include _1500
+  $lr_padding: 30px
 
+  @include _768
+    $lr_padding: 15px
 // ELEMENTS and ELEMENTS MIXINS
 
 a.button-1
@@ -266,6 +270,7 @@ a.circle-button
   transition: .3s
   @include _700
     font-size: 14px
+
   &:hover
     background: $red url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
 
@@ -273,27 +278,28 @@ a.circle-button
     background: $dark-red url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
     border: 2px solid $dark-red
 
+@mixin social
+  .social-links
+    display: inline-grid
+    grid-template-columns: repeat(4, 1fr)
+    justify-items: center
+    align-items: center
+    grid-gap: 20px
 
-.social-links
-  display: grid
-  grid-template-columns: repeat(4, 1fr)
-  justify-items: center
-  align-items: center
-  grid-gap: 65px
-
-  a
-    .link-image
-      transition: .3s
-
-    &:hover
+    a
       .link-image
-        fill: $white
-        opacity: 1
+        transition: .3s
 
-    &:active
-      .link-image
-        fill: $red
-        opacity: 1
+      &:hover
+        .link-image
+          fill: $white
+          opacity: 1
+
+      &:active
+        .link-image
+          fill: $red
+          opacity: 1
+  @content
 
 input.field, textarea.field
   font-family: $monteserat
@@ -333,9 +339,99 @@ body, html
   @include _768
     margin-top: 35px
 
+@mixin category
+  .category
+    margin-left: 123px
+    margin-bottom: calc(105px - 2em)
+    @include _1366
+      margin-left: 90px
+    @include _979
+      margin-left: 0
+      margin-bottom: 0
+
+    .items
+      float: left
+      display: block
+      margin-bottom: 25px
+      @include _768
+        margin-bottom: 10px
+
+      a
+        display: inline-block
+        @include breakpoints_text(18px, 16px, 14px)
+        font-family: Montserrat
+        font-style: normal
+        font-weight: 500
+        line-height: 125%
+        text-decoration: none
+        color: $white
+        position: relative
+        padding-bottom: 25px
+        transition: .3s
+
+        &:before
+          content: ''
+          position: absolute
+          height: 2px
+          width: 0%
+          background: $red
+          bottom: 0
+          left: 0
+          opacity: 0
+          transition: .5s
+          @include _768
+            bottom: -10px
+          @include _480
+            &:not(:last-child)
+              content: none
+
+        @include _979
+          margin-bottom: 15px
+        @include _768
+          padding-bottom: 0
+          @include _480
+            &:last-child:before
+              opacity: 1
+              width: 20px
+              bottom: -25px
+
+        &:not(:last-child)
+          margin-right: 75px
+          @include _1200
+            margin-right: 16px
+
+
+        &.active
+          color: $red
+
+          &:before
+            width: 20%
+            opacity: 1
+            @include _480
+              opacity: 0
+
+        &:not(:last-child).active:before
+          @include _480
+            opacity: 0
+
+    .text
+      float: left
+      margin-top: 25px
+      font-family: Montserrat
+      font-style: normal
+      font-weight: normal
+      @include breakpoints_text(15px, 14px, 14px)
+      line-height: 145%
+      letter-spacing: 0.04em
+      color: #B1B1B1
+      max-width: 1073px
+
+      p
+        margin-bottom: 1.5em
+    @content
 
 section
-  padding: 94px calc(50vw - 720px) 125px
+  padding: 94px $lr_padding 125px
   min-width: 100%
   box-sizing: border-box
   position: relative
@@ -465,7 +561,7 @@ section
   box-sizing: border-box
   width: 100vw
   min-width: 320px
-  padding: 0 calc(50vw - 720px)
+  padding: 0 $lr_padding
   @include _1500
     padding-left: 30px
   @include _1366
@@ -485,7 +581,7 @@ section
     align-items: center
     grid-template-columns: repeat(3, 1fr)
     top: 309px
-    padding-left: calc(50vw - 720px)
+    padding-left: $lr_padding
     background: rgba(36, 36, 36, 0.1)
     backdrop-filter: blur(25px)
     @include _1500
@@ -590,7 +686,7 @@ section
   .scroll-more
     position: absolute
     cursor: pointer
-    right: calc(50vw - 720px)
+    right: $lr_padding
     bottom: 150px
     animation: fadein 1s ease-in
     @include _1500
@@ -609,7 +705,7 @@ header
   top: 40px
   width: 100vw
   min-width: 320px
-  padding: 0 calc(50vw - 720px)
+  padding: 0 $lr_padding
   grid-template-columns: 220px 1fr 1fr auto
   z-index: 100
   grid-column-gap: 20px
@@ -749,10 +845,53 @@ header
         font-size: 12px
         font: $monteserat
 
+.broadcumps
+  margin-top: 163px
+  padding: 15px $lr_padding
+  margin-bottom: -30px
+  @include _1500
+    padding: 25px 30px
+    @include _768
+      padding: 25px 15px
+
+  h1
+    font-family: $two_mass
+    font-style: normal
+    font-weight: 900
+    font-size: 24px
+    line-height: 125%
+
+    color: $white
+    letter-spacing: 0.1em
+    text-transform: uppercase
+    display: inline-block
+    margin-right: 25px
+    @include _480
+      font-size: 18px
+
+  a
+    font-weight: 500
+    font-size: 16px
+    line-height: 125%
+    color: #F4F4F4
+    text-decoration: none
+    opacity: 0.4
+    vertical-align: top
+
+  span
+    font-weight: 500
+    vertical-align: top
+    font-size: 16px
+    line-height: 125%
+    color: #F4F4F4
+
+  svg
+    transform: translateY(-4px)
+    margin: 0 15px
 
 footer
   display: grid
-  padding: 100px calc(50vw - 720px) 95px
+  padding: 100px $lr_padding 95px
   grid-template-columns: 3fr 3fr 7fr
   background: #1E1E1E
   margin-top: 60px
@@ -767,13 +906,16 @@ footer
   @include _700
     padding: 40px 15px
     grid-template-columns: 1fr
+
   a img
     max-width: 200px
+
   .footer-links
     display: grid
     align-content: start
     @include _700
       grid-template-columns: 1fr 1fr
+
     a
       font-family: Montserrat
       font-weight: normal
@@ -787,8 +929,10 @@ footer
       @include _700
         padding-left: 25px
         font-size: 14px
+
       &:not(:last-child)
         margin-bottom: 25px
+
       &:before
         content: '/'
         position: absolute
@@ -797,6 +941,7 @@ footer
         color: $red
         top: 0
         left: 0
+
   .right-links
     display: grid
     grid-template-columns: repeat(3, 1fr)
@@ -806,6 +951,7 @@ footer
     @include _700
       grid-template-columns: 1fr 1fr
       grid-column: 1/2
+
     a
       font-style: normal
       font-weight: normal
@@ -816,10 +962,12 @@ footer
       text-decoration: none
       @include _700
         font-size: 14px
+
       &:nth-child(2n-1)
         margin-bottom: 25px
         @include _700
           margin-bottom: 20px
+
     span.policy
       grid-column: 1/4
       color: $red
@@ -837,6 +985,7 @@ footer
         @include _700
           font-size: 13px
       margin-top: 40px
+
       &:before
         content: '/'
         position: absolute
@@ -872,94 +1021,8 @@ footer
   @include _480
     padding-bottom: 140px
 
-  .category
-    margin-left: 123px
-    margin-bottom: calc(105px - 2em)
-    @include _1366
-      margin-left: 90px
-    @include _979
-      margin-left: 0
-      margin-bottom: 0
 
-    .items
-      float: left
-      display: block
-      margin-bottom: 25px
-      @include _768
-        margin-bottom: 10px
-
-      a
-        display: inline-block
-        @include breakpoints_text(18px, 16px, 14px)
-        font-family: Montserrat
-        font-style: normal
-        font-weight: 500
-        line-height: 125%
-        text-decoration: none
-        color: $white
-        position: relative
-        padding-bottom: 25px
-        transition: .3s
-
-        &:before
-          content: ''
-          position: absolute
-          height: 2px
-          width: 0%
-          background: $red
-          bottom: 0
-          left: 0
-          opacity: 0
-          transition: .5s
-          @include _768
-            bottom: -10px
-          @include _480
-            &:not(:last-child)
-              content: none
-
-        @include _979
-          margin-bottom: 15px
-        @include _768
-          padding-bottom: 0
-          @include _480
-            &:last-child:before
-              opacity: 1
-              width: 20px
-              bottom: -25px
-
-        &:not(:last-child)
-          margin-right: 75px
-          @include _1200
-            margin-right: 16px
-
-
-        &.active
-          color: $red
-
-          &:before
-            width: 20%
-            opacity: 1
-            @include _480
-              opacity: 0
-
-        &:not(:last-child).active:before
-          @include _480
-            opacity: 0
-
-    .text
-      float: left
-      margin-top: 25px
-      font-family: Montserrat
-      font-style: normal
-      font-weight: normal
-      @include breakpoints_text(15px, 14px, 14px)
-      line-height: 145%
-      letter-spacing: 0.04em
-      color: #B1B1B1
-      max-width: 1073px
-
-      p
-        margin-bottom: 1.5em
+  @include category
 
   .images-grid
     display: grid
@@ -1148,7 +1211,7 @@ footer
     position: absolute
     top: 94px
     right: 0
-    margin-right: calc(50vw - 720px)
+    margin-right: $lr_padding
     z-index: 1
     transform: translateX(35px)
     @include _1500
@@ -1210,20 +1273,22 @@ footer
       p
         @include breakpoints_text(15px, 15px, 14px)
         color: #B1B1B1
+
   svg.circle-backgound
     position: absolute
     top: 15%
     right: 5%
-    //transform: rotate(180deg)
+//transform: rotate(180deg)
 
 section.connect
   h1.section
     margin-bottom: 125px
     @include _768
       margin-bottom: 35px
+
   .pre-footer
     display: grid
-    grid-template-columns: repeat(2,1fr)
+    grid-template-columns: repeat(2, 1fr)
     justify-items: stretch
     @include _1366
       grid-template-columns: 1fr
@@ -1233,10 +1298,12 @@ section.connect
     @include _480
       justify-items: stretch
       grid-gap: 30px
+
     .info-block
       @include _1366
         display: grid
         align-content: start
+
       p
         font-style: normal
         font-weight: normal
@@ -1246,12 +1313,14 @@ section.connect
         margin-bottom: 10px
         @include _768
           margin-bottom: 10px
+
       .contact
         display: inline-grid
         margin-right: 47px
         margin-top: 45px
         @include _768
           margin-top: 35px
+
         label
           font-weight: 600
           font-size: 15px
@@ -1260,12 +1329,14 @@ section.connect
           color: #B1B1B1
           opacity: 0.4
           margin-bottom: 5px
+
         a
           font-size: 15px
           line-height: 145%
           letter-spacing: 0.04em
           text-decoration-line: underline
           color: #F4F4F4
+
         li
 
           font-size: 15px
@@ -1277,6 +1348,7 @@ section.connect
           color: #F4F4F4
           @include _768
             margin-bottom: 10px
+
       .map
         margin-top: 55px
         min-width: 100%
@@ -1288,6 +1360,7 @@ section.connect
       justify-items: center
       @include _768
         justify-items: start
+
       form
         margin-top: 7px
         width: 582px
@@ -1299,6 +1372,7 @@ section.connect
           justify-self: stretch
         @include _480
           width: 100%
+
         label
           font-weight: 600
           font-size: 15px
@@ -1308,12 +1382,16 @@ section.connect
           opacity: 0.4
           margin-bottom: 5px
           margin-left: 3px
+
           &:not(:first-child)
             margin-top: 45px
+
         .field
           width: 100%
           resize: none
+
           &.text
+
           &::placeholder
             font-style: normal
             font-weight: 300
@@ -1335,10 +1413,12 @@ section.connect
   height: 100vh
   z-index: -1
   transition: .3s
+
   &.active
     z-index: 100
     background: rgba(#000, .3)
     backdrop-filter: blur(10px)
+
 .modal
   position: fixed
   display: grid
@@ -1347,6 +1427,7 @@ section.connect
   display: none
   opacity: 0
   z-index: 150
+
   &#call
     width: 545px
     height: 630px
@@ -1354,8 +1435,10 @@ section.connect
     top: 10vh
     left: calc(100vh - 272.5px)
     padding: 55px 45px
+
   &.active
     display: grid
+
     h3
       font-family: "2MASS J1808", sans-serif
       font-style: normal
@@ -1370,6 +1453,7 @@ section.connect
     input
       width: 100%
       margin-bottom: 25px
+
       &::placeholder
         color: $white
         font-family: Montserrat
@@ -1379,6 +1463,7 @@ section.connect
         line-height: 145%
         /* or 23px */
         letter-spacing: 0.04em
+
     .large-button
       width: calc(100% - 90px)
       position: absolute
@@ -1386,5 +1471,550 @@ section.connect
       left: 45px
 
 
+section.portfolio-page
+  overflow: hidden
+  padding-bottom: 0
+  @include category
+
+  .category
+    margin-left: 0
+
+.portfolio-cards
+  padding-left: $lr_padding
+  max-width: 100vw
+  overflow: hidden
+
+  @include _1500
+    padding-left: 30px
+    max-width: calc(100vw - 0px)
+    @include _768
+      padding-left: 15px
+      max-width: calc(100vw - 15px)
 
 
+  .card
+    position: relative
+    display: block
+    height: 300px
+    width: 225px
+    background: #000
+    box-sizing: border-box
+    overflow: hidden
+    transition: all .3s
+    margin-right: 20px
+
+    &:focus
+      outline: none
+
+    num
+      display: inline
+      position: absolute
+      top: 20px
+      right: 15px
+      font-family: $two_mass
+      font-style: normal
+      font-weight: 900
+      font-size: 36px
+      line-height: 48px
+      letter-spacing: 0.1em
+      text-transform: uppercase
+      color: $white
+      transition: all .3s
+      z-index: 10
+
+    img
+      opacity: .4
+      transition: .7s
+
+    h3.title
+      position: absolute
+      display: block
+      width: 100%
+      font-family: Montserrat
+      font-style: normal
+      font-weight: 500
+      font-size: 16px
+      line-height: 125%
+      bottom: 0
+      color: $white
+      left: 0
+      padding-left: 25px
+      transition: .4s
+      padding-bottom: 25px
+
+    a.more
+      position: absolute
+      font-weight: 500
+      font-size: 16px
+      line-height: 125%
+      text-decoration: none
+      color: $white
+      padding: 4px 20px
+      background: $red
+      bottom: 80px
+      left: 0
+      opacity: 0
+      transition: .5s
+
+    &:hover
+      num
+        top: 5px
+        opacity: 0
+
+      h3.title
+        bottom: -20px
+        opacity: 0
+
+      img
+        opacity: 1
+
+      a.more
+        bottom: 30px
+        opacity: 1
+
+.progress
+  display: block
+  box-sizing: content-box
+  //width: 100vw
+  max-width: 100vw
+  height: 5px
+  border-radius: 3px
+  overflow: hidden
+  margin: 0 $lr_padding
+  background-color: rgba($white, .2)
+  background-image: linear-gradient(to right, $red, $red)
+  background-repeat: no-repeat
+  background-size: 0 100%
+
+  transition: background-size 0.4s ease-in-out
+
+  @include _1500
+    margin: 0 30px
+  @include _768
+    margin: 0 15px
+
+section.case
+  padding-right: 0
+  padding-top: 64px
+  padding-bottom: 64px
+  display: grid
+  grid-template-columns: 370px auto
+
+  aside
+    padding-top: 50px
+    display: grid
+    grid-template-rows: 64px 300px auto
+    align-items: start
+    height: calc(50px + #{$case_slider})
+
+  h1.title
+    font-family: $two_mass
+    font-size: 28px
+    font-style: normal
+    font-weight: 400
+    line-height: 32px
+    letter-spacing: .1em
+    text-align: left
+    text-transform: uppercase
+    color: $white
+    align-self: end
+
+  p
+    font-style: normal
+    font-weight: normal
+    font-size: 15px
+    line-height: 145%
+    margin: 15px 0
+    letter-spacing: 0.04em
+    max-width: 266px
+    color: #B1B1B1
+
+  span.price
+    font-family: $two_mass
+    font-weight: 900
+    font-size: 24px
+    line-height: 32px
+    letter-spacing: 0.1em
+    text-transform: uppercase
+    color: #F4F4F4
+    align-self: end
+
+    span
+      font-family: $two_mass
+      font-weight: 900
+      font-size: 24px
+      line-height: 32px
+      letter-spacing: 0.1em
+      text-transform: uppercase
+      color: $red
+
+  .controls
+    width: 100%
+    height: 25px
+    padding-right: $lr_padding
+    margin-bottom: 25px
+    @include _1500
+      padding-right: 30px
+    @include _768
+      padding-right: 15px
+
+    .attr
+      display: inline-block
+
+      &:not(:last-child)
+        margin-right: 48px
+
+      span
+        font-size: 15px
+        line-height: 145%
+        /* identical to box height, or 22px */
+        letter-spacing: 0.04em
+        color: #B1B1B1
+        float: left
+        margin-right: 15px
+
+      h4
+        float: left
+        font-style: normal
+        font-weight: 500
+        font-size: 15px
+        line-height: 145%
+        letter-spacing: 0.04em
+        color: $white
+
+    .slider-nav
+      display: inline-grid
+      grid-template-columns: 1fr 1fr
+      float: right
+      align-items: center
+      grid-gap: 45px
+      height: 100%
+
+      img
+        max-width: 67px
+        cursor: pointer
+        transition: .3s
+
+        &:active
+          transform: scale(.9)
+
+        &.slick-disabled
+          opacity: .4
+
+  .images
+    max-width: calc(100vw - #{$lr_padding} - 370px)
+    height: 580px
+    overflow-y: hidden
+    @include _1500
+      max-width: calc(100vw - 30px - 370px)
+
+    .img-wrapper
+      margin-right: 40px
+      max-width: 1030px
+      min-height: $case_slider
+      max-height: $case_slider
+
+      &:active, &:focus
+        outline: none
+
+    .slider-image
+      //width: 100%
+      object-fit: cover
+
+section.plan
+  padding-bottom: 64px
+
+  h2
+    font-family: $two_mass
+    color: $white
+    font-size: 24px
+    width: 100%
+    font-style: normal
+    font-weight: 900
+    line-height: 32px
+    letter-spacing: .1em
+    text-align: left
+    display: inline-block
+    border-bottom: 1px solid rgba($white, .2)
+    padding-bottom: 20px
+
+  .content
+    margin-top: 100px
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 64px
+
+    .areas
+      display: grid
+      grid-template-columns: repeat(3, 1fr)
+      justify-items: stretch
+      align-content: start
+      grid-row-gap: 45px
+
+      p
+        margin-top: 20px
+        grid-column: 1/4
+        font-size: 15px
+        font-style: normal
+        font-weight: 400
+        line-height: 22px
+        letter-spacing: 0, 04em
+        text-align: left
+        color: #B1B1B1
+        max-width: 372px
+
+      .area
+        span
+          font-weight: 500
+          font-size: 18px
+          line-height: 125%
+
+        h5
+          font-weight: 600
+          margin: 5px 0
+          color: $red
+          font-size: 15px
+          line-height: 145%
+          /* identical to box height, or 22px */
+
+          letter-spacing: 0.04em
+
+
+section.rooms
+  .slider-nav
+    display: inline-grid
+    grid-template-columns: 1fr 1fr
+    float: left
+    align-items: center
+    grid-gap: 45px
+    height: 100%
+    margin-bottom: 30px
+
+    img
+      max-width: 67px
+      cursor: pointer
+      transition: .3s
+
+      &:active
+        transform: scale(.9)
+
+      &.slick-disabled
+        opacity: .4
+
+  .room-info
+    width: 100%
+    display: grid
+    grid-template-columns: 892px auto
+    grid-column-gap: 80px
+    max-width: 100%
+
+    .img
+      max-width: 892px
+
+  .text
+    position: relative
+
+    .counter
+      display: inline-grid
+      grid-template-columns: 1fr 115px 1fr
+      grid-column-gap: 20px
+      align-items: center
+      font-size: 24px
+      font-style: normal
+      font-weight: 600
+      line-height: 29px
+      letter-spacing: 0em
+      text-align: left
+      color: $white
+      vertical-align: center
+      align-self: start
+      justify-self: start
+
+      .all
+        opacity: .2
+
+      svg
+        display: inline
+        vertical-align: center
+
+    .room-title
+      font-family: $two_mass
+      font-size: 24px
+      font-style: normal
+      font-weight: 400
+      line-height: 34px
+      letter-spacing: 0.1em
+      text-align: left
+      color: $white
+      margin: 129px 0 15px
+      position: relative
+
+      &:before
+        content: ''
+        position: absolute
+        display: block
+        height: 2px
+        width: 55px
+        background: $white
+        bottom: 12px
+        left: -80px
+
+    p
+      font-size: 15px
+      line-height: 145%
+      /* or 22px */
+
+      letter-spacing: 0.04em
+
+      color: #B1B1B1
+
+    a.link
+      position: absolute
+      bottom: 0
+      color: $red
+      text-align: end
+      font-size: 12px
+      line-height: 145%
+      letter-spacing: 0.04em
+
+section.contacts
+  padding-top: 64px
+  grid-row-gap: 45px
+  display: grid
+
+  iframe
+    height: 485px
+
+  .contacts-block
+    display: grid
+    grid-template-columns: repeat(5, auto)
+
+    &__contact
+      display: inline-grid
+      grid-row-gap: 10px
+      position: relative
+      padding-left: 35px
+      float: left
+
+      svg
+        position: absolute
+        top: 0
+        left: 0
+
+      h2.title, a.title
+        text-decoration: none
+        color: $white
+        font-size: 16px
+        font-style: normal
+        font-weight: 700
+        line-height: 20px
+        letter-spacing: 0.08em
+        text-align: left
+
+      h4.secondary
+        font-size: 12px
+        line-height: 15px
+        letter-spacing: 0.08em
+        color: $white
+        font-weight: 400
+
+    @include social()
+
+.bg-services
+  background: url("/static/img/bg_services.png") no-repeat
+  background-size: cover
+  margin-top: 64px
+  border-top: 1px solid rgba($white, .2)
+  border-bottom: 1px solid rgba($white, .2)
+
+  div img
+    margin-bottom: 25px
+  section
+    display: grid
+    padding-bottom: 0
+    padding-top: 0
+    grid-template-columns: auto 460px
+
+    &:nth-child(2n -1)
+      grid-template-columns:  460px auto
+  .services
+    display: grid
+    grid-template-columns: 460px auto
+    position: relative
+    grid-column-gap: 105px
+    .text
+      padding: 0
+
+
+
+div
+  .text
+    display: grid
+    align-content: start
+    justify-items: start
+    margin-bottom: 30px
+    position: relative
+    padding: 0 122px
+    align-items: center
+    &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        height: 1px
+        background: rgba($white, .2)
+        width: calc(1440px - 460px)
+
+    num
+      margin-top: 51px
+      margin-bottom: 30px
+      font-weight: 600
+      font-size: 15px
+      line-height: 145%
+      letter-spacing: 0.04em
+      color: #B1B1B1
+      position: relative
+
+      &:after
+        content: ''
+        position: absolute
+        width: 100%
+        height: 2px
+        background: $red
+        left: 0
+        bottom: -5px
+
+    h2
+      font-weight: 500
+      font-size: 18px
+      line-height: 125%
+      color: $white
+      margin: 15px 0
+      &.red
+        color: $red
+    p
+      font-size: 15px
+      line-height: 145%
+      letter-spacing: 0.04em
+      color: #B1B1B1
+      padding-bottom: 15px
+      &:last-child
+        //padding-bottom: 45px
+    span.bold, h3
+      font-size: 15px
+      line-height: 145%
+      font-weight: bold
+      letter-spacing: 0.04em
+      color: $white
+    h3
+      margin: 15px 0 25px
+
+    a.read-more
+      font-family: Montserrat
+      font-style: normal
+      font-weight: 500
+      font-size: 14px
+      line-height: 130%
+      text-decoration-line: underline
+      color: $red
+      margin: 15px 0
