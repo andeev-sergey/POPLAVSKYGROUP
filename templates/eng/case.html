@@ -1,0 +1,94 @@
+{% extends 'eng/base.html' %} {% load static %} {% block content %}
+    {% include 'eng/bread.html' with variable=case.title_eng %}
+    {% with meta=case.seo_dictinary %}
+        {% include 'eng/meta.html' with val=meta title=case.title_eng %}
+    {% endwith %}
+    <section class="case">
+        <aside>
+            <h1 class="title">
+                {{ case.title_eng }}
+            </h1>
+            <p>{{ case.short_descrition_eng }}</p>
+            <span class="price">FROM <span>{{ case.price_usd }} USD.</span></span>
+        </aside>
+        <div class="presentation">
+            <div class="controls">
+                <div class="attr"><span>Style</span> <h4>{{ case.style_ru }}</h4></div>
+                <div class="attr"><span>Year</span> <h4>{{ case.year }}</h4></div>
+                <div class="attr"><span>Location</span> <h4>{{ case.location_eng }}</h4></div>
+                <div class="slider-nav">
+                    <img src="{% static 'img/arr-prev.svg' %}" alt="" class="prev">
+                    <img src="{% static 'img/arr-next.svg' %}" alt="" class="next">
+                </div>
+            </div>
+            <div class="images">
+                {% for room in case.rooms.all %}
+                    <div class="img-wrapper">
+                        <img class="slider-image" src="{{ room.image.url }}" alt="">
+                    </div>
+                {% endfor %}
+
+            </div>
+
+
+        </div>
+    </section>
+    <section class="plan">
+        <h2 class="plan">The plan of the apartment</h2>
+        <div class="content">
+            <img src="{{ case.project_plan.url }}" alt="" class="plan">
+            <div class="areas">
+                {% for area in case.areas.all %}
+
+                    <div class="area">
+                        <span>{{ area.area_value }} m²</span>
+                        <h5>{{ area.name_eng }}</h5>
+                    </div>
+                {% endfor %}
+                <p class="description">{{ case.descrition_eng }}</p>
+
+            </div>
+        </div>
+    </section>
+    <section class="rooms">
+        <div class="slider-nav">
+            <img src="{% static 'img/arr-prev.svg' %}" alt="" class="prev">
+            <img src="{% static 'img/arr-next.svg' %}" alt="" class="next">
+        </div>
+        <div class="room-info">
+            <div class="room-slider">
+                {% for room in case.rooms.all %}
+                    <img data-text="{{ room.room_descrition_eng }}" data-name="{{ room.name_eng }}"
+                         src="{{ room.image.url }}">
+                {% endfor %}
+
+            </div>
+            <div class="text">
+                <div class="counter">
+                    <span class="active">1</span>
+                    <svg width="115" height="3" viewBox="0 0 115 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.2" width="115" height="3" fill="#F4F4F4"/>
+                    </svg>
+                    <span class="all"></span>
+                </div>
+                {% with case.rooms.all|first as room %}
+                    <h3 class="room-title">
+
+
+                        {{ room.name_eng }}
+
+
+                    </h3>
+                    <p>
+
+                        {{ room.room_descrition_eng }}
+
+                    </p>
+                {% endwith %}
+                <a href="#ff_1" class="link ff_1">To calculate the cost of the project</a>
+            </div>
+        </div>
+
+    </section>
+    {% include 'eng/footer-form.html' with title='Did you like the project?' title_2='Contact us to order!' %}
+{% endblock %}

@@ -1,0 +1,92 @@
+{% extends 'eng/base.html' %} {% load static %} {% block content %}
+
+    {% include 'eng/bread.html' with page='About us' %}
+    <section class="thesis">
+        <h2>A few words</h2>
+        <p class="main-text">The POPLAVSKY GROUP architecture and design studio offers its services in development of
+            interior and exterior design projects! We see our mission in creating a quality product that meets all the
+            client's requirements, fits the timescale and complies with all the relevant standards. For many years our
+            projects we used for construction and finishing works. All leading specialists of our studio are experienced
+            people with proper education.</p>
+        <span>We have all the necessary licenses and experience in getting PS&E approval from different supervisory authorities.</span>
+        <span>We not only make design projects – we also build, renovate and carry out finishing works.</span>
+    </section>
+    <section class="team">
+        <h2>Our Team</h2>
+        <div class="cards">
+            {% for worker in workers %}
+                <div class="card">
+                    <img src="{{ worker.image.url }}" alt="">
+                    <h3 class="name">{{ worker.name_eng }}</h3>
+                    <h4 class="title">{{ worker.title_eng }}</h4>
+                </div>
+            {% endfor %}
+
+        </div>
+        <div class="text-descr">
+            <p>Let's get acquainted! We are Vasilii and Olga – the co-founders and architects of the Poplavsky Group
+                Studio, brother and sister. We were born in a creative family, from our childhood we were instilled with
+                a sense of beauty, the basics of composition, the history of architecture, etc. When it was the time to
+                choose a future profession we didn’t have any hesitations. Both of us went through a labour-intensive
+                learning process, we are certified specialists in architecture and urban planning (VSTU), for about 10
+                years in the profession.</p>
+            <p> Of course, it is not only two of us, we have a time-tested, qualified team of specialists.</p>
+            <p>At the moment Poplavsky Group is carrying out projects mainly in Moscow and the Moscow region, St.
+                Petersburg and the Leningrad region, Voronezh and the Voronezh region.</p>
+            <p>
+                This is the main geography of our creative activity, however we have architectural and design objects in
+                other cities. We are working and are ready to work in any city in Russia and all over the world.
+            </p>
+            <p>Poplavsky Group's mission is to create beauty and harmony around. We are convinced that an object with
+                any budget can be qualitatively implemented due to the trust of the client and the creative approach
+                from our part! We are waiting for you!</p>
+        </div>
+    </section>
+    <section class="reviews">
+        <h2>Testimonials</h2>
+        <div class="controls">
+            <a href="" class="button-2"> </a>
+        </div>
+        <div class="reviews-slider">
+
+            {% for review in reviews %}
+                <div class="review">
+                    <div class="info">
+                        <div class="titles">
+                            <h4 class="name">{{ review.name_eng }}</h4>
+                            <h5 class="title">{{ review.title_eng }}</h5>
+                        </div>
+                        <div class="inner">
+                            <img src="{{ review.image.url }}" alt="">
+                            <div class="review-title">
+                                <p>{{ review.review_title_eng }}</p>
+                                <span class="bread">
+                                    <span class="project">Project</span>
+                                    <svg width="8" height="15" viewBox="0 0 8 15" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.455 0.37L7.54 0.37L2.59 14.5L0.504997 14.5L5.455 0.37Z"
+                                              fill="#DA2525"/>
+                                    </svg>
+                                    <a href="{% url 'eng-case' review.project.pk %}"><span
+                                            class="project-title">{{ review.project.title_eng }}</span></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="review-text">{% autoescape off %}{{ review.review_body_eng }}{% endautoescape %}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="partners">
+        <h2>Our partners</h2>
+        <div class="square">
+            {% for partner in partners %}
+                <img src="{{ partner.image.url }}" alt="">
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'eng/footer-form.html' with title='Got a question?' title_2='Contact us!' %}
+{% endblock %}

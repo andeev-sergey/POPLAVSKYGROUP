@@ -4,13 +4,13 @@
         <img class="logo" src="{% static 'img/Logo.svg' %}" alt="">
     </a>
     <div class="footer-links">
-        <a href="#">vkontakte</a>
+        <a href="{{ settings.vk_link }}" target="_blank">vkontakte</a>
 
-        <a href="#">instagram</a>
+        <a href="{{ settings.instagram_link }}" target="_blank">instagram</a>
 
-        <a href="#">telegram</a>
+        <a href="{{ settings.telegram_link }}" target="_blank">telegram</a>
 
-        <a href="#">Houzz</a>
+        <a href="{{ settings.houzz_link }}" target="_blank">Houzz</a>
 
     </div>
     <div class="right-links">
@@ -18,8 +18,11 @@
         <a href="{% url 'services' %}">Услуги и цены</a>
         <a href="{% url 'about' %}">О нас</a>
         <a href="{% url 'portfolio' %}">Портфолио</a>
-        <a href="{% url 'contacts' %}">Заказать проект</a>
+        <a href="" data-link="call" class="open-modal">Заказать проект</a>
         <a href="{% url 'contacts' %}">Контакты</a>
-        <span class="policy"><a href="">Privacy policy</a> & <a href="">Terms of Use</a></span>
+        <span class="policy">
+            Все материалы данного сайта носят исключительно информационный характер <br> и ни при каких условиях не являются публичной офертой, определяемой положениями статьи 437(2) Гражданского Кодекса РФ.
+            Copyright © <span id="site"></span> {% now 'Y' %}.
+        </span>
     </div>
 </footer>

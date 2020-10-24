@@ -1,0 +1,31 @@
+{% load static %}
+
+<div class="overlay"></div>
+<div class="modal" id="call">
+    <svg width="16" height="16" id="closeAll" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.59427" width="19.1644" height="2.25464" transform="rotate(45 1.59427 0)" fill="#242424"/>
+        <rect x="15.1456" y="1.59427" width="19.1644" height="2.25464" transform="rotate(135 15.1456 1.59427)"
+              fill="#242424"/>
+    </svg>
+
+    <form id="request_call" action="">
+        <h3>Request a <br>consultation</h3>
+        <input type="text" name="name" class="field" required placeholder="Your name">
+        <input type="tel" name="phone" pattern='^\+?\d{0,13}' required class="field" placeholder="Your telephone">
+        <input type="email" name="email" class="field" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+               placeholder="Your email" required>
+        <input type="text" name="msg" class="field" placeholder="Ask your question">
+        <input type="submit" class="large-button" value="Call me">
+    </form>
+    <div class="question">
+        <div class="tnx">
+            <h2 class="title">Thank you for contacting us!</h2>
+            <p>Our manager will contact you soon!</p>
+            <h3 class="red">working time:</h3>
+            <div class="time">
+                <span><small>Mo-Fr:</small> &nbsp; 10.00 - 19.00 </span>
+                <span><small>Sa-Su:</small> &nbsp; 11.00 - 16.00 </span>
+            </div>
+        </div>
+    </div>
+</div>

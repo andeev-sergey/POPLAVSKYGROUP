@@ -1,5 +1,8 @@
 {% extends 'ru/base.html' %} {% load static %} {% block content %}
-{% include 'ru/bread.html' with variable=case.title_ru   %}
+    {% include 'ru/bread.html' with variable=case.title_ru %}
+    {% with meta=case.seo_dictinary %}
+        {% include 'ru/meta.html' with val=meta title=case.title_ru %}
+    {% endwith %}
     <section class="case">
         <aside>
             <h1 class="title">
@@ -55,7 +58,8 @@
         <div class="room-info">
             <div class="room-slider">
                 {% for room in case.rooms.all %}
-                    <img src="{{ room.image.url }}" alt="">
+                    <img data-text="{{ room.room_descrition_ru }}" data-name="{{ room.name_ru }}"
+                         src="{{ room.image.url }}">
                 {% endfor %}
 
             </div>
@@ -67,15 +71,24 @@
                     </svg>
                     <span class="all"></span>
                 </div>
-                <h3 class="room-title">
-                    Кухня
-                </h3>
-                <p>Данный проект разработан для молодого человека. Заказчиком был выбран скандинавский стиль с добавлением небольшого количества классических элементов, что позволило разнообразить дизайн помещений, подчеркнув индивидуальность и характер клиента. </p>
-                <a href="" class="link">Рассчитать стоимость проекта</a>
+                {% with case.rooms.all|first as room %}
+                    <h3 class="room-title">
+
+
+                        {{ room.name_ru }}
+
+
+                    </h3>
+                    <p>
+
+                        {{ room.room_descrition_ru }}
+
+                    </p>
+                {% endwith %}
+                <a href="#ff_1" class="link ff_1">Рассчитать стоимость проекта</a>
             </div>
         </div>
-        {#    {% for foo in case.rooms.all %}#}
-        {#        <img style="width: 200px" src="{{ foo.image.url }}" alt="">#}
-        {#    {% endfor %}#}
+
     </section>
+    {% include 'ru/footer-form.html' with title='Понравился проект?' title_2='Свяжитесь с нами, чтобы заказать!' %}
 {% endblock %}

@@ -1,0 +1,18 @@
+
+{% if page_en %}
+    <title>{{ page_en }}</title>
+    <meta name="description" content="{{ meta.descr }}">
+{% else %}
+{% if case.title_eng %}
+    <title>{{ case.title_eng }}</title>
+    <meta name="Keywords" content="{{ case.seo_dictinary }}">
+    <meta name="description" content="{{ case.short_descrition_eng }}">
+{% endif %}
+{% endif %}
+
+
+{% if meta %}
+<title>POPLAVSKY GROUP</title>
+    <meta name="Keywords" content="{{ meta.meta_words }}">
+    <meta name="description" content="{{ meta.descr_eng }}">
+{% endif %}

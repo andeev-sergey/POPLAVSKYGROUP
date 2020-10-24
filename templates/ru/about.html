@@ -1,5 +1,96 @@
 {% extends 'ru/base.html' %} {% load static %} {% block content %}
 
-{% include 'ru/bread.html' with page='О нас' %}
+    {% include 'ru/bread.html' with page='О нас' %}
+    <section class="thesis">
+        <h2>Пара слов</h2>
+        <p class="main-text">Студия архитектуры и дизайна POPLAVSKY GROUP предлагает свои услуги по разработке проектов
+            как интерьерного, так и экстерьерного типа! Наша миссия - создание качественного продукта, удовлетворяющего
+            всем требованиям клиента, в точно оговоренные сроки и с соблюдением всех соответствующих норм. На протяжении
+            многих лет по нашим проектам осуществляются строительные и отделочные работы. Все ведущие специалисты нашей
+            студии - люди с многолетним опытом работы и профильным образованием.</p>
+        <span>У нас есть все необходимые лицензии, опыт согласования проектной документации в различных инстанциях</span>
+        <span>Мы не только проектируем, но еще и строим, ремонтируем, осуществляем отделочные работы</span>
+    </section>
+    <section class="team">
+        <h2>Наша команда</h2>
+        <div class="cards">
+            {% for worker in workers %}
+                <div class="card">
+                    <img src="{{ worker.image.url }}" alt="">
+                    <h3 class="name">{{ worker.name_ru }}</h3>
+                    <h4 class="title">{{ worker.title_ru }}</h4>
+                </div>
+            {% endfor %}
 
+        </div>
+        <div class="text-descr">
+            <p>Давайте познакомимся! Мы Василий и Ольга – сооснователи и архитекторы студии Poplasky Group, брат и
+                сестра.
+                Родились в творческой семье, с детства нам прививали чувство прекрасного, знакомили с основами
+                композиции,
+                историей архитектуры и т.д. При выборе профессии большого выбора не стояло, мы оба прошли трудоёмкий
+                процесс
+                обучения, являемся дипломированными специалистами, специальность – архитектура и градостроительство
+                (ВГТУ).
+                В профессии порядка 10 лет.</p>
+            <p> Конечно, мы работаем не только вдвоем, у нас есть проверенная временем, квалифицированная команда
+                специалистов.</p>
+            <p> На данный момент Poplavsky Group ведет проекты преимущественно в Москве и Московской области,
+                Санкт-Петербурге и Ленинградской области, в Воронеже и Воронежской области.</p>
+            <p>Это основная география нашей
+                творческой деятельности, однако у нас есть объекты и в других городах, мы работаем и готовы работать в
+                любом
+                городе России и мира.</p>
+            <p>Миссией Poplavsky Group является создание красоты и гармонии вокруг. <br>Мы убеждены, что объект с любым
+                бюджетом можно достойно реализовать, достаточно лишь доверия со стороны клиента и креативного подхода с
+                нашей стороны! Ждем Вас!</p>
+        </div>
+    </section>
+    <section class="reviews">
+        <h2>Отзывы клиентов</h2>
+        <div class="controls">
+            <a href="" class="button-2"> </a>
+        </div>
+        <div class="reviews-slider">
+
+            {% for review in reviews %}
+                <div class="review">
+                    <div class="info">
+                        <div class="titles">
+                            <h4 class="name">{{ review.name }}</h4>
+                            <h5 class="title">{{ review.title_ru }}</h5>
+                        </div>
+                        <div class="inner">
+                            <img src="{{ review.image.url }}" alt="">
+                            <div class="review-title">
+                                <p>{{ review.review_title_ru }}</p>
+                                <span class="bread">
+                                    <span class="project">Проект</span>
+                                    <svg width="8" height="15" viewBox="0 0 8 15" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5.455 0.37L7.54 0.37L2.59 14.5L0.504997 14.5L5.455 0.37Z"
+                                              fill="#DA2525"/>
+                                    </svg>
+                                    <a href="{% url 'case' review.project.pk %}"><span
+                                            class="project-title">{{ review.project.title_ru }}</span></a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="review-text">{% autoescape off %}{{ review.review_body_ru }}{% endautoescape %}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="partners">
+        <h2>Наши партнеры</h2>
+        <div class="square">
+            {% for partner in partners %}
+                <img src="{{ partner.image.url }}" alt="">
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'ru/footer-form.html' with title='Напишите нам' title_2='Свяжитесь с нами, чтобы задать вопрос!' %}
 {% endblock %}

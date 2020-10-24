@@ -1,0 +1,39 @@
+{% load static %}
+
+<header>
+    <a href="{% url 'eng-main' %}" alt="LOGO" class="logo">
+        <img class="logo" src="{% static 'img/Logo.svg' %}" alt="">
+    </a>
+    <div class="menu-button">
+        <div class="icon"></div>
+        <span>Menu</span>
+
+    </div>
+    <div class="menu">
+        <ul>
+            <li class="active"><a href="{% url 'eng-main' %}">Home</a></li>
+            <li><a href="{% url 'eng-portfolio' %}">Portfolio</a></li>
+            <li><a href="{% url 'eng-services' %}">Prices and services</a></li>
+            <li><a href="#" data-link="call" class="open-modal">Order a project</a></li>
+            <li><a href="{% url 'eng-about' %}">About us</a></li>
+            <li><a href="{% url 'eng-contacts' %}">Contact</a></li>
+        </ul>
+        <div class="lang"><span>Рус</span><span class="active">Eng</span></div>
+    </div>
+    <a href="#" data-link="call" class="button-1 open-modal">Request a callback</a>
+
+    <div class="links">
+        <div class="link">
+            <a href="tel:{{ settings.phone }}">{{ settings.phone }}</a>
+            <small> For clients </small>
+        </div>
+        <div class="link">
+            <a href="tel:{{ settings.phone_office }}">{{ settings.phone_office }}</a>
+            <small>Office</small>
+        </div>
+        <div class="link">
+            <a href="mailto:{{ settings.mail }}">{{ settings.mail}}</a>
+            <small>Email</small>
+        </div>
+    </div>
+</header>

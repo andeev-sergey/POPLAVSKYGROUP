@@ -1,0 +1,31 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style/master.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
+    {% with meta=settings %}
+          {% include 'eng/meta.html' with meta=meta %}
+    {% endwith %}
+</head>
+<body>
+{% csrf_token %}
+{% include 'eng/header.html' %}
+{% block content %}
+{% endblock %}
+{% include 'eng/footer.html' %}
+{% include 'eng/modals.html' %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+<script src="{% static 'js/master.js' %}" charset="utf-8"></script>
+</body>
+
+</html>

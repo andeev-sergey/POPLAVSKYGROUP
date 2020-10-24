@@ -1,0 +1,66 @@
+{% extends 'eng/base.html' %} {% load static %} {% block content %}
+    {% include 'eng/bread.html' with page='Portfolio' %}
+    <section class="portfolio-page">
+        <div class="category">
+
+            <div class="items">
+                <a href=""  data-tab="1" class="active">Architecture</a>
+                <a href=""  data-tab="2" >Residential Interiors</a>
+                <a href=""  data-tab="3" >Commercial Interiors</a>
+                <a href=""  data-tab="4" >Completed projects</a>
+            </div>
+            <div class="text data_1 active">
+                     <p>Our studio develops various architectural objects: serviced apartments, houses, multi-storey
+                        apartment buildings, sports facilities, public buildings, retail areas, etc. We carry out the
+                        entire design cycle from an initial concept to construction drawings with a complete set of
+                        plans, specifications, and estimates.
+                    </p>
+                    <p>We are also experienced in undergoing PS&E expertise and approval by supervisory authorities.</p>
+                    <p>We also carry out architectural supervision to make sure that the project choices are followed
+                        during all the construction process.</p>
+                </div>
+                <div class="text data_2">
+                    <p>An integral part of the design projects of our studio are private interiors - interiors of houses
+                        and apartments. Poplavsky Group provides the creation of personalized housing with a planning
+                        solution according to individual customer requests. We create the most varied interior design of
+                        residential premises and professionally implement any ideas of our clients in any space, taking
+                        into account the allocated budget. The originality of the design solution does not depend on the
+                        area.</p>
+
+                </div>
+                <div class="text data_3">
+                     <p>Professional organization of working space is important for employees and clients of any
+                        commercial establishment. Our team has extensive experience in the design development of office
+                        premises, restaurants and sales areas in compliance with all technologies and ergonomic
+                        requirements.
+                        Designers work on a project in close cooperation with architects and technologists.</p>
+                </div>
+                <div class="text data_4">
+                   <p>People actually build structures according to our projects and build them quite successfully.
+                        Many of our projects have been implemented during our work, as well as objects in the
+                        development of which the company took a significant part.
+                    </p>
+                </div>
+        </div>
+
+    </section>
+    <div class="portfolio-cards">
+     {% for case in cases %}
+        <div class="card">
+
+                <num class="card_number"></num>
+                {% if case.image %}
+                    <img src="{{ case.image.url }}" alt="">
+                    {% else %}
+                     <img src="{% static 'img/card.png' %}" alt="">
+                {% endif %}
+                <h3 class="title">{{ case.title_eng}}</h3>
+                <a href="{% url 'eng-case' case.pk %}" class="more">more</a>
+                </div>
+    {% endfor %}
+
+
+    </div>
+    <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+ {% include 'eng/footer-form.html' with title='CONTACT US' title_2='Contact us to ask a question!' %}
+{% endblock %}

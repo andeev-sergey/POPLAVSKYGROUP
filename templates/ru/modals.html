@@ -2,12 +2,30 @@
 
 <div class="overlay"></div>
 <div class="modal" id="call">
-    <form action="">
+    <svg width="16" height="16" id="closeAll" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1.59427" width="19.1644" height="2.25464" transform="rotate(45 1.59427 0)" fill="#242424"/>
+        <rect x="15.1456" y="1.59427" width="19.1644" height="2.25464" transform="rotate(135 15.1456 1.59427)"
+              fill="#242424"/>
+    </svg>
+
+    <form id="request_call" action="">
         <h3>ЗАКАЖИТЕ <br>КОНСУЛЬТАЦИЮ</h3>
-        <input type="text" class="field" placeholder="Ваше имя">
-        <input type="tel" pattern='^\+?\d{0,13}' class="field" placeholder="Ваш телефон">
-        <input type="email" class="field" placeholder="Ваша почта">
-        <input type="text" class="field" placeholder="Ваш вопрос">
+        <input type="text" name="name" class="field" required placeholder="Как Вас зовут?">
+        <input type="tel" name="phone" pattern='^\+?\d{0,13}' required class="field" placeholder="Ваш номер телефона">
+        <input type="email" name="email" class="field" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+               placeholder="E-mail" required>
+        <input type="text" name="msg" class="field" placeholder="Ваш вопрос">
         <input type="submit" class="large-button" value="Позвоните мне">
     </form>
+    <div class="question">
+        <div class="tnx">
+            <h2 class="title">Спасибо за обращение!</h2>
+            <p>Наш менеджер свяжется с вами в ближайшее время!</p>
+            <h3 class="red">Время работы:</h3>
+            <div class="time">
+                <span><small>пн-пт:</small> &nbsp; 10.00 - 19.00 </span>
+                <span><small>сб-вс:</small> &nbsp; 11.00 - 16.00 </span>
+            </div>
+        </div>
+    </div>
 </div>

@@ -11,9 +11,16 @@
     <link rel="stylesheet" href="{% static 'style/master.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'slick/slick-theme.css' %}"/>
-    <title>Poplavsky Group</title>
+    {% with meta=settings %}
+          {% include 'ru/meta.html' with meta=meta %}
+    {% endwith %}
+
+
+
+
 </head>
 <body>
+{% csrf_token %}
 {% include 'ru/header.html' %}
 {% block content %}
 {% endblock %}

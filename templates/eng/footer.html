@@ -1,0 +1,28 @@
+{% load static %}
+<footer>
+    <a href="{% url 'eng-main' %}" alt="LOGO" class="logo">
+        <img class="logo" src="{% static 'img/Logo.svg' %}" alt="">
+    </a>
+    <div class="footer-links">
+        <a href="{{ settings.vk_link }}" target="_blank">vkontakte</a>
+
+        <a href="{{ settings.instagram_link }}" target="_blank">instagram</a>
+
+        <a href="{{ settings.telegram_link }}" target="_blank">telegram</a>
+
+        <a href="{{ settings.houzz_link }}" target="_blank">Houzz</a>
+
+    </div>
+    <div class="right-links">
+        <a href="{% url 'eng-main' %}">Home</a>
+        <a href="{% url 'eng-services' %}">Prices and services</a>
+        <a href="{% url 'eng-about' %}">About us</a>
+        <a href="{% url 'eng-portfolio' %}">Portfolio</a>
+        <a href="" data-link="call" class="open-modal">Order a project</a>
+        <a href="{% url 'eng-contacts' %}">Contact</a>
+        <span class="policy">All information contained on this site is for informational purposes only. <br>
+            The information provided on the site is not exhaustive.
+            Copyright © <span id="site"></span>  {% now 'Y' %}.
+        </span>
+    </div>
+</footer>

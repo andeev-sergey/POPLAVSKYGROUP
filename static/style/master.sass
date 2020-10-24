@@ -1,5 +1,5 @@
 // FONTS
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap')
 @font-face
   font-family: '2MASS J1808'
   src: url('fonts/2MASSJ1808-Heavy.eot')
@@ -25,6 +25,7 @@ $white: #F4F4F4
 $red: #DA2525
 $dark-red: #9A1212
 $back: #242424
+
 
 // CSS RESET
 *,
@@ -53,7 +54,7 @@ dl,
 dd
   margin: 0
   padding: 0
-  font-family: 'Montserrat'
+  font-family: 'Montserrat', serif
   -webkit-tap-highlight-color: transparent
 
 body
@@ -73,9 +74,6 @@ img
   max-width: 100%
   display: block
   width: 100%
-
-a
-
 
 input,
 button,
@@ -205,6 +203,11 @@ a.button-2
   letter-spacing: 0.08em
   background: url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
   transition: .3s
+  height: 55px
+  width: 215px
+
+  &.left
+    background: url("img/arrow-left.svg") 31px 50% no-repeat
 
   &:hover
     background: $red url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
@@ -213,6 +216,8 @@ a.button-2
     background: $dark-red url("img/arrow-right.svg") calc(100% - 31px) 50% no-repeat
     border: 2px solid $dark-red
 
+  &:focus
+    outline: none
 
 a.circle-button
   display: inline-block
@@ -251,6 +256,9 @@ a.circle-button
       &:before
         transform: scale(.79)
 
+  &:focus
+    outline: none
+
 .large-button
   display: inline-block
   font-family: $monteserat
@@ -268,8 +276,14 @@ a.circle-button
   border: 2px solid #DA2525
   background: url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
   transition: .3s
-  @include _700
-    font-size: 14px
+
+  &:focus
+    outline: none
+
+  @include _768
+    font-size: 12px
+    background: url("img/arrow-right.svg") calc(100% - 15px) 50% no-repeat
+    padding: 15px 15px
 
   &:hover
     background: $red url("img/arrow-right.svg") calc(100% - 35px) 50% no-repeat
@@ -285,6 +299,7 @@ a.circle-button
     justify-items: center
     align-items: center
     grid-gap: 20px
+    max-width: 164px
 
     a
       .link-image
@@ -330,6 +345,7 @@ body, html
   background: #242424
   width: 100vw
   position: relative
+  scroll-behavior: smooth
 
   &.fixed
     overflow: hidden
@@ -415,6 +431,7 @@ body, html
             opacity: 0
 
     .text
+      display: none
       float: left
       margin-top: 25px
       font-family: Montserrat
@@ -428,6 +445,11 @@ body, html
 
       p
         margin-bottom: 1.5em
+
+      &.active
+        display: block
+
+
     @content
 
 section
@@ -438,7 +460,7 @@ section
   min-height: 100px
   @include _1500
     padding: 20px 30px
-    @include _768
+    @include _480
       padding: 10px 15px
 
   h1.section
@@ -468,6 +490,11 @@ section
   opacity: 0
   pointer-events: none
   transition: .3s
+  @include _480
+
+    height: 100vh
+    width: 100vw
+    box-sizing: border-box
 
   ul
     margin-top: 12px
@@ -525,6 +552,8 @@ section
   .lang
     align-self: end
     margin-left: 40px
+    @include _480
+      align-self: center
 
     span
       font-family: Montserrat
@@ -549,6 +578,10 @@ section
     opacity: 1
     animation: fadefromtop .5s
     top: 90px
+    @include _480
+      top: -20px
+      backdrop-filter: none
+      background: #242424
 
 
 .frame
@@ -570,6 +603,8 @@ section
     height: 550px
     padding-bottom: 0
     padding-left: 15px
+  @include _480
+    background-position: center
 
   .rectangle
     position: absolute
@@ -593,7 +628,7 @@ section
       top: 220px
 
     @include _768
-
+      background: rgba(36, 36, 36, 0.5)
       grid-template-columns: 1fr
       padding: 30px 15px
       top: 119px
@@ -658,7 +693,9 @@ section
         left: 0
         background: $red
         @include _1366
-          left: -30px
+          left: 0
+        @include _768
+          left: 0
 
   .links
     margin-bottom: 55px
@@ -719,10 +756,11 @@ header
         display: none
   @include _768
     grid-template-columns: 220px 1fr 1fr
+    top: 20px
   @include _700
     grid-template-columns: 1fr 1fr
     padding: 0 15px
-    top: 0
+
 
   a.logo
     justify-self: start
@@ -795,6 +833,12 @@ header
           top: 9px
 
     &.active
+      z-index: 100
+      transition: all .3s
+      @include _480
+        transform: translateY(14px)
+        background: rgba(36, 36, 36, 0.5)
+
       .icon
         &:before
           transform: rotate(45deg)
@@ -851,8 +895,15 @@ header
   margin-bottom: -30px
   @include _1500
     padding: 25px 30px
-    @include _768
-      padding: 25px 15px
+    margin-top: 140px
+    margin-bottom: 45px
+  @include _768
+    margin-top: 120px
+    padding: 0px 30px
+    margin-bottom: 15px
+  @include _480
+    padding: 0 15px
+
 
   h1
     font-family: $two_mass
@@ -860,7 +911,6 @@ header
     font-weight: 900
     font-size: 24px
     line-height: 125%
-
     color: $white
     letter-spacing: 0.1em
     text-transform: uppercase
@@ -868,6 +918,8 @@ header
     margin-right: 25px
     @include _480
       font-size: 18px
+      width: 100%
+      margin-bottom: 5px
 
   a
     font-weight: 500
@@ -877,6 +929,10 @@ header
     text-decoration: none
     opacity: 0.4
     vertical-align: top
+    @include _768
+      font-size: 14px
+    @include _480
+      font-size: 12px
 
   span
     font-weight: 500
@@ -884,17 +940,27 @@ header
     font-size: 16px
     line-height: 125%
     color: #F4F4F4
+    @include _768
+      font-size: 14px
+    @include _480
+      font-size: 12px
 
   svg
     transform: translateY(-4px)
     margin: 0 15px
+    @include _768
+      transform: translateY(-6px)
+    @include _480
+      margin: 0
+      transform: translateY(0)
+
 
 footer
   display: grid
   padding: 100px $lr_padding 95px
   grid-template-columns: 3fr 3fr 7fr
   background: #1E1E1E
-  margin-top: 60px
+  margin-top: 0
   @include _1500
     padding: 60px 30px 95px
   @include _1200
@@ -969,13 +1035,16 @@ footer
           margin-bottom: 20px
 
     span.policy
+
       grid-column: 1/4
-      color: $red
+      color: #B1B1B1
       position: relative
       padding-left: 45px
+      font-size: 14px
       @include _700
         grid-column: 1/3
         padding-left: 25px
+        font-size: 12px
 
       a
         font-style: normal
@@ -1006,6 +1075,17 @@ footer
     opacity: 1
     transform: translateY(0px)
 
+@keyframes fadeinDown
+  0%
+    opacity: 0
+    transform: translateY(30px)
+  70%
+    opacity: .9
+    transform: translateY(5px)
+  100%
+    opacity: 1
+    transform: translateY(0px)
+
 @mixin breakpoints_text($desktop, $laptop, $mobile)
   font-size: $desktop
   @include _1366
@@ -1013,9 +1093,19 @@ footer
     @include _768
       font-size: $mobile
 
+
+@keyframes blinker
+  0%
+    background-position-x: 0vw
+  100%
+    background-position-x: 140vw
+
 .portfolio
   display: grid
-  background: url("img/Архитектура.svg") repeat-x 10% 45%
+  background: url("../img/bg-screen-2.png") repeat-x 50% 45%
+  background-size: 70vw
+  background-position-x: 0%
+  animation: blinker linear 25s infinite
   @include _768
     background: none
   @include _480
@@ -1034,6 +1124,12 @@ footer
     span
       display: none
 
+    img
+      transition: .3s
+
+      &:hover
+        transform: scale(.98)
+
     @include _768
       display: block
       max-width: calc(100vw - 30px)
@@ -1046,16 +1142,21 @@ footer
           width: 30vw
       img
         margin-right: 7px
-        width: calc(50vw - 7px)
+        width: calc(40vw - 7px)
+        outline: none
+
       .slide
         margin-right: 7px
         width: calc(50vw - 7px)
         display: grid
         justify-items: center
         align-items: center
-
+        @include _480
+          min-height: calc(50vw - 20px)
       a.circle-button
         align-self: center
+        @include _480
+          transform: translateY(-10px)
 
 .prices
   background: url("/static/img/ef150e95289907 1.png")
@@ -1138,6 +1239,10 @@ footer
         font-size: 14px
         transition: .2s
         align-self: center
+
+        &:active, &:focus
+          outline: none
+
         @include _768
           bottom: 30px
 
@@ -1198,6 +1303,12 @@ footer
         width: 43%
         background: $red
 
+@keyframes spin
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
 .exp
   position: relative
   overflow: hidden
@@ -1214,6 +1325,7 @@ footer
     margin-right: $lr_padding
     z-index: 1
     transform: translateX(35px)
+    animation: spin linear 25s infinite
     @include _1500
       margin-right: 20px
       top: -10px
@@ -1274,10 +1386,12 @@ footer
         @include breakpoints_text(15px, 15px, 14px)
         color: #B1B1B1
 
-  svg.circle-backgound
-    position: absolute
-    top: 15%
-    right: 5%
+svg.circle-backgound
+  position: absolute
+  //bottom: 0
+  right: calc(#{$lr_padding} - 100px)
+  @include _768
+    display: none
 //transform: rotate(180deg)
 
 section.connect
@@ -1288,12 +1402,14 @@ section.connect
 
   .pre-footer
     display: grid
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: 1fr 582px
     justify-items: stretch
+    grid-gap: 86px
     @include _1366
       grid-template-columns: 1fr
       grid-gap: 85px
       justify-items: start
+      margin-bottom: 80px
 
     @include _480
       justify-items: stretch
@@ -1346,14 +1462,14 @@ section.connect
           letter-spacing: 0.04em
 
           color: #F4F4F4
+
+          &:last-child
+            margin-bottom: 55px
+            @include _480
+              margin-bottom: 20px
+
           @include _768
             margin-bottom: 10px
-
-      .map
-        margin-top: 55px
-        min-width: 100%
-        @include _480
-          height: 300px
 
     .callback
       display: grid
@@ -1361,7 +1477,39 @@ section.connect
       @include _768
         justify-items: start
 
-      form
+      .question
+        display: none
+        justify-self: center
+        align-self: start
+        width: 582px
+
+        &.success
+          display: grid
+          animation: fadeinDown .5s
+
+        @include _480
+          width: 100%
+
+        h2.title
+          padding-bottom: 25px
+          margin-bottom: 25px
+          position: relative
+          @include breakpoints_text(34px, 24px, 18px)
+
+          &:after
+            content: ''
+            position: absolute
+            height: 5px
+            width: 100%
+            background: $red
+            bottom: 0
+            left: 0
+
+        p
+          @include breakpoints_text(15px, 15px, 14px)
+          color: #B1B1B1
+
+      .form
         margin-top: 7px
         width: 582px
         display: grid
@@ -1413,11 +1561,13 @@ section.connect
   height: 100vh
   z-index: -1
   transition: .3s
+  z-index: 100
+  pointer-events: none
 
   &.active
-    z-index: 100
+    pointer-events: all
     background: rgba(#000, .3)
-    backdrop-filter: blur(10px)
+//backdrop-filter: blur(10px)
 
 .modal
   position: fixed
@@ -1427,48 +1577,176 @@ section.connect
   display: none
   opacity: 0
   z-index: 150
+  transition: all .3s
+  overflow: hidden
+
+  svg
+    display: none
+    cursor: pointer
+    position: absolute
+    top: 20px
+    right: 15px
+
+    rect
+      fill: #B1B1B1
+
+    @include _480
+      display: block
 
   &#call
     width: 545px
     height: 630px
     background: #242424
     top: 10vh
-    left: calc(100vh - 272.5px)
+    left: calc(50vw - 272.5px)
     padding: 55px 45px
-
-  &.active
-    display: grid
-
-    h3
-      font-family: "2MASS J1808", sans-serif
-      font-style: normal
-      font-weight: 900
-      font-size: 24px
-      line-height: 32px
-      letter-spacing: 0.1em
-      text-transform: uppercase
-      color: $white
-      margin-bottom: 75px
-
-    input
+    @include _1366
+    @include _480
       width: 100%
-      margin-bottom: 25px
+      height: 100%
+      top: 0
+      left: 0
+      align-content: end
+      padding: 30px 15px 10vh
 
-      &::placeholder
+    &.active
+      display: grid
+
+      h3:not(.red)
+        font-family: "2MASS J1808", sans-serif
+        font-style: normal
+        font-weight: 900
+        @include breakpoints_text(24px, 18px, 16px)
+        line-height: 32px
+        letter-spacing: 0.1em
+        text-transform: uppercase
         color: $white
+        margin-bottom: 75px
+        @include _480
+          height: 100%
+          display: inline-block
+          align-self: center
+
+      input
+        width: 100%
+        margin-bottom: 25px
+        @include _480
+          margin-bottom: 30px
+          padding-bottom: 5px
+
+        &::placeholder
+          color: $white
+          font-family: Montserrat
+          font-style: normal
+          font-weight: normal
+          font-size: 16px
+          line-height: 145%
+          /* or 23px */
+          letter-spacing: 0.04em
+          @include _480
+            font-size: 12px
+
+      .large-button
+        width: calc(100% - 90px)
+        position: absolute
+        bottom: 65px
+        left: 45px
+        @include _480
+          position: static
+          width: 100%
+          margin-bottom: 0
+          padding-bottom: 15px
+
+  .question
+    display: none
+    background: #242424
+    align-items: center
+    justify-items: center
+    opacity: 0
+    height: 100%
+
+    .tnx
+      max-width: 100%
+      display: grid
+      @include _768
+        max-width: 80vw
+      @include _480
+        grid-gap: 10px
+
+      h2.title
+        padding-bottom: 25px
+        margin-bottom: 25px
+        position: relative
+        @include breakpoints_text(34px, 34px, 18px)
+        color: $white
+
+        &:after
+          content: ''
+          position: absolute
+          height: 5px
+          width: 60%
+          background: $red
+          bottom: 0
+          left: 0
+          transition: .2s
+
+      p
+        @include breakpoints_text(15px, 15px, 14px)
+        color: #B1B1B1
+        max-width: 60%
+        @include _768
+          max-width: 80%
+        @include _480
+          max-width: 100%
+
+      h3.red
         font-family: Montserrat
         font-style: normal
-        font-weight: normal
-        font-size: 16px
+        font-weight: 600
+        font-size: 15px
         line-height: 145%
-        /* or 23px */
+        color: $red
         letter-spacing: 0.04em
+        margin-top: 25px
+        margin-bottom: 6px
+        @include _480
+          font-size: 12px
+          font-weight: 600
+          margin: 0
 
-    .large-button
-      width: calc(100% - 90px)
-      position: absolute
-      bottom: 65px
-      left: 45px
+      .time
+        display: grid
+        grid-gap: 25px
+        justify-self: start
+        grid-template-columns: 1fr 1fr
+        @include _768
+          grid-template-columns: 1fr
+          margin-top: 19px
+          @include _480
+            grid-gap: 15px
+            margin-top: 0
+
+        span
+          font-weight: 600
+          color: $white
+          font-size: 15px
+          @include _480
+            font-size: 14px
+
+        small
+          color: #B1B1B1
+          @include breakpoints_text(15px, 15px, 14px)
+
+  &.success
+    align-content: start
+
+    form
+      display: none
+
+    .question
+      display: grid
+      opacity: 1
+      animation: fadeinDown .5s
 
 
 section.portfolio-page
@@ -1487,9 +1765,15 @@ section.portfolio-page
   @include _1500
     padding-left: 30px
     max-width: calc(100vw - 0px)
-    @include _768
-      padding-left: 15px
-      max-width: calc(100vw - 15px)
+  @include _768
+    padding-left: 30px
+    max-width: calc(100vw - 30px)
+  @include _480
+    max-width: calc(100vw - 15px)
+    padding-left: 15px
+    //background: red
+    text-align: center
+    margin: 0
 
 
   .card
@@ -1502,6 +1786,16 @@ section.portfolio-page
     overflow: hidden
     transition: all .3s
     margin-right: 20px
+
+    @include _768
+      width: 183px
+      height: 244px
+    @include _480
+      width: 138px
+      height: 184px
+      display: inline-block
+      margin-right: 15px
+
 
     &:focus
       outline: none
@@ -1521,9 +1815,18 @@ section.portfolio-page
       color: $white
       transition: all .3s
       z-index: 10
+      @include _768
+        font-size: 24px
+        top: 20px
+        right: 20px
+      @include _480
+        top: 5px
+        right: 10px
+
 
     img
       opacity: .4
+      height: 100%
       transition: .7s
 
     h3.title
@@ -1541,6 +1844,13 @@ section.portfolio-page
       padding-left: 25px
       transition: .4s
       padding-bottom: 25px
+      @include _768
+        font-size: 14px
+        padding-left: 15px
+        padding-bottom: 20px
+      @include _480
+        padding: 0 10px 15px
+        font-size: 12px
 
     a.more
       position: absolute
@@ -1555,6 +1865,10 @@ section.portfolio-page
       left: 0
       opacity: 0
       transition: .5s
+
+
+      &:focus
+        outline: none
 
     &:hover
       num
@@ -1571,6 +1885,9 @@ section.portfolio-page
       a.more
         bottom: 30px
         opacity: 1
+        @include _768
+          bottom: 10px
+
 
 .progress
   display: block
@@ -1580,18 +1897,19 @@ section.portfolio-page
   height: 5px
   border-radius: 3px
   overflow: hidden
-  margin: 0 $lr_padding
   background-color: rgba($white, .2)
   background-image: linear-gradient(to right, $red, $red)
   background-repeat: no-repeat
   background-size: 0 100%
 
   transition: background-size 0.4s ease-in-out
-
+  margin: 45px $lr_padding 0
   @include _1500
-    margin: 0 30px
+    margin: 35px 30px 0
   @include _768
-    margin: 0 15px
+    margin: 25px 30px 0
+  @include _480
+    margin: 25px 15px 0
 
 section.case
   padding-right: 0
@@ -1599,6 +1917,13 @@ section.case
   padding-bottom: 64px
   display: grid
   grid-template-columns: 370px auto
+  @include _768
+    grid-template-columns: 1fr
+    width: calc(100vw - 60px)
+    box-sizing: border-box
+    padding: 20px 30px
+  @include _480
+    padding: 15px
 
   aside
     padding-top: 50px
@@ -1606,6 +1931,16 @@ section.case
     grid-template-rows: 64px 300px auto
     align-items: start
     height: calc(50px + #{$case_slider})
+    @include _768
+      padding-top: 5px
+      height: auto
+      grid-template-columns: 1fr 1fr
+      grid-template-rows: 1fr
+      align-items: center
+    @include _480
+      grid-template-columns: 1fr
+      padding-top: 0
+
 
   h1.title
     font-family: $two_mass
@@ -1618,6 +1953,11 @@ section.case
     text-transform: uppercase
     color: $white
     align-self: end
+    @include _768
+      grid-column: 1/2
+      font-size: 18px
+    @include _480
+      font-size: 14px
 
   p
     font-style: normal
@@ -1628,6 +1968,12 @@ section.case
     letter-spacing: 0.04em
     max-width: 266px
     color: #B1B1B1
+    @include _768
+      grid-column: 1/2
+      font-size: 14px
+      max-width: none
+    @include _480
+      font-size: 12px
 
   span.price
     font-family: $two_mass
@@ -1638,6 +1984,19 @@ section.case
     text-transform: uppercase
     color: #F4F4F4
     align-self: end
+    @include _768
+      grid-column: 2/3
+      grid-row: 1/3
+      align-self: center
+      justify-self: end
+      font-size: 18px
+    @include _480
+      grid-column: 1/2
+      grid-row: 3/4
+      justify-self: start
+      margin-bottom: 35px
+      font-size: 18px
+
 
     span
       font-family: $two_mass
@@ -1647,6 +2006,8 @@ section.case
       letter-spacing: 0.1em
       text-transform: uppercase
       color: $red
+      @include _480
+        font-size: 18px
 
   .controls
     width: 100%
@@ -1655,14 +2016,24 @@ section.case
     margin-bottom: 25px
     @include _1500
       padding-right: 30px
+    @include _1200
+      height: auto
     @include _768
-      padding-right: 15px
+      padding-right: 0
+      font-size: 12px
+      vertical-align: center
+      height: 25px
+      margin-bottom: 15px
+    @include _480
+      margin-bottom: 30px
 
     .attr
       display: inline-block
 
       &:not(:last-child)
         margin-right: 48px
+        @include _1366
+          margin-right: 20px
 
       span
         font-size: 15px
@@ -1672,6 +2043,8 @@ section.case
         color: #B1B1B1
         float: left
         margin-right: 15px
+        @include _768
+          font-size: 12px
 
       h4
         float: left
@@ -1681,6 +2054,8 @@ section.case
         line-height: 145%
         letter-spacing: 0.04em
         color: $white
+        @include _768
+          font-size: 12px
 
     .slider-nav
       display: inline-grid
@@ -1689,6 +2064,14 @@ section.case
       align-items: center
       grid-gap: 45px
       height: 100%
+      height: 25px
+      @include _1200
+      @include _768
+        right: 25px
+      @include _480
+        position: absolute
+        bottom: 0
+        right: 15px
 
       img
         max-width: 67px
@@ -1707,22 +2090,40 @@ section.case
     overflow-y: hidden
     @include _1500
       max-width: calc(100vw - 30px - 370px)
+    @include _768
+      max-width: calc(100vw - 60px)
+    @include _480
+      padding-bottom: 20px
+      max-width: calc(100vw - 30px)
+      width: 100%
+      height: auto
 
     .img-wrapper
       margin-right: 40px
       max-width: 1030px
       min-height: $case_slider
       max-height: $case_slider
+      @include _1366
+        max-width: 60vw
 
       &:active, &:focus
         outline: none
 
+      @include _480
+        max-width: 70vw
+        min-width: 70vw
+        height: auto
+        min-height: 1px
+
+
     .slider-image
-      //width: 100%
+      width: 100%
       object-fit: cover
 
 section.plan
   padding-bottom: 64px
+  @include _480
+    padding-bottom: 40px
 
   h2
     font-family: $two_mass
@@ -1737,12 +2138,18 @@ section.plan
     display: inline-block
     border-bottom: 1px solid rgba($white, .2)
     padding-bottom: 20px
+    @include _480
+      font-size: 18px
 
   .content
     margin-top: 100px
     display: grid
     grid-template-columns: 1fr 1fr
     grid-column-gap: 64px
+    @include _768
+      grid-template-columns: 1fr
+      margin-top: 35px
+      grid-row-gap: 35px
 
     .areas
       display: grid
@@ -1750,6 +2157,8 @@ section.plan
       justify-items: stretch
       align-content: start
       grid-row-gap: 45px
+      @include _480
+        grid-row-gap: 25px
 
       p
         margin-top: 20px
@@ -1758,16 +2167,23 @@ section.plan
         font-style: normal
         font-weight: 400
         line-height: 22px
-        letter-spacing: 0, 04em
+        letter-spacing: 0.04em
         text-align: left
         color: #B1B1B1
         max-width: 372px
+        @include _768
+          max-width: none
+        @include _480
+          font-size: 14px
+          margin-top: 0
 
       .area
         span
           font-weight: 500
           font-size: 18px
           line-height: 125%
+          @include _480
+            font-size: 14px
 
         h5
           font-weight: 600
@@ -1778,7 +2194,9 @@ section.plan
           /* identical to box height, or 22px */
 
           letter-spacing: 0.04em
-
+          @include _480
+            font-size: 10px
+            display: table-caption
 
 section.rooms
   .slider-nav
@@ -1789,6 +2207,10 @@ section.rooms
     grid-gap: 45px
     height: 100%
     margin-bottom: 30px
+    @include _768
+      height: 29px
+    @include _480
+      grid-gap: 25px
 
     img
       max-width: 67px
@@ -1807,35 +2229,58 @@ section.rooms
     grid-template-columns: 892px auto
     grid-column-gap: 80px
     max-width: 100%
+    @include _1500
+      grid-template-columns: 1fr 1fr
+    @include _768
+      grid-template-columns: 1fr
 
     .img
       max-width: 892px
+      @include _1500
+        max-width: calc(50vw - 30px)
+
+    .room-slider
+      max-width: calc(50vw - 30px)
+      @include _768
+        max-width: calc(100vw - 60px)
+      @include _480
+        max-width: calc(100vw - 30px)
+
+  .counter
+    display: inline-grid
+    grid-template-columns: 1fr 115px 1fr
+    grid-column-gap: 20px
+    align-items: center
+    font-size: 24px
+    font-style: normal
+    font-weight: 600
+    line-height: 29px
+    letter-spacing: 0em
+    text-align: left
+    color: $white
+    vertical-align: center
+    align-self: start
+    justify-self: start
+    @include _768
+      position: absolute
+      right: 30px
+    @include _480
+      right: 15px
+      font-size: 14px
+      grid-column-gap: 15px
+      grid-template-columns: 1fr 50px 1fr
+      svg
+        width: 100%
+
+    .all
+      opacity: .2
+
+    svg
+      display: inline
+      vertical-align: center
 
   .text
     position: relative
-
-    .counter
-      display: inline-grid
-      grid-template-columns: 1fr 115px 1fr
-      grid-column-gap: 20px
-      align-items: center
-      font-size: 24px
-      font-style: normal
-      font-weight: 600
-      line-height: 29px
-      letter-spacing: 0em
-      text-align: left
-      color: $white
-      vertical-align: center
-      align-self: start
-      justify-self: start
-
-      .all
-        opacity: .2
-
-      svg
-        display: inline
-        vertical-align: center
 
     .room-title
       font-family: $two_mass
@@ -1848,6 +2293,8 @@ section.rooms
       color: $white
       margin: 129px 0 15px
       position: relative
+      @include _768
+        margin: 30px 0 15px
 
       &:before
         content: ''
@@ -1856,8 +2303,10 @@ section.rooms
         height: 2px
         width: 55px
         background: $white
-        bottom: 12px
+        top: 17px
         left: -80px
+        @include _768
+          content: none
 
     p
       font-size: 15px
@@ -1876,11 +2325,19 @@ section.rooms
       font-size: 12px
       line-height: 145%
       letter-spacing: 0.04em
+      @include _768
+        position: static
+        display: inline-block
+        margin: 35px 0
 
 section.contacts
   padding-top: 64px
   grid-row-gap: 45px
   display: grid
+  @include _768
+    padding-top: 20px
+  @include _480
+    padding-top: 0px
 
   iframe
     height: 485px
@@ -1888,18 +2345,27 @@ section.contacts
   .contacts-block
     display: grid
     grid-template-columns: repeat(5, auto)
+    @include _1200
+      grid-template-columns: repeat(3, auto)
+      grid-gap: 25px
+    @include _480
+      grid-template-columns: 1fr
+
 
     &__contact
       display: inline-grid
       grid-row-gap: 10px
       position: relative
-      padding-left: 35px
+      padding-left: 30px
       float: left
+      @include _1200
+        float: none
 
       svg
         position: absolute
-        top: 0
+        top: 3px
         left: 0
+        width: 15px
 
       h2.title, a.title
         text-decoration: none
@@ -1910,6 +2376,8 @@ section.contacts
         line-height: 20px
         letter-spacing: 0.08em
         text-align: left
+        @include _768
+          font-size: 14px
 
       h4.secondary
         font-size: 12px
@@ -1920,34 +2388,169 @@ section.contacts
 
     @include social()
 
+.bg-services-mobile
+  width: 100vw
+  display: none
+  margin-top: 35px
+  @include _480
+    display: block
+
+  .sq
+    &:focus
+      outline: none
+
+    .text
+      p
+        font-size: 15px
+        line-height: 145%
+        letter-spacing: 0.04em
+        color: #B1B1B1
+        margin: 15px
+
+        .bold
+          color: $white
+
+      h3
+        font-size: 14px
+        font-weight: 400
+        color: $white
+        margin: 0 15px
+
+      num
+        display: inline-block
+        font-weight: 600
+        font-size: 15px
+        line-height: 145%
+        letter-spacing: 0.04em
+        color: #B1B1B1
+        position: relative
+        margin-top: 25px
+        margin-bottom: 20px
+        margin-left: 15px
+
+        &:after
+          content: ''
+          position: absolute
+          width: 100%
+          height: 2px
+          background: $red
+          left: 0
+          bottom: -5px
+
+      h2
+        font-weight: 500
+        font-size: 16px
+        line-height: 125%
+        color: $white
+        margin: 15px
+
+      .wrapper
+        overflow: hidden
+
+        &.closed
+          height: 9em
+
+      a.read-more
+        display: inline-block
+        font-family: Montserrat
+        font-style: normal
+        font-weight: 500
+        font-size: 14px
+        line-height: 130%
+        text-decoration-line: underline
+        color: $red
+        margin: 15px
+
+        &:focus
+          outline: none
+
+  ul.slick-dots
+    text-align: left
+    bottom: -50px
+
+    li
+      display: inline-block
+      width: calc(19% - 15px)
+      background: #4f4f4f
+      height: 4px
+      margin: 4px
+      transition: all .3s
+
+      &.slick-active
+        width: 43%
+        background: $red
+
+
 .bg-services
   background: url("/static/img/bg_services.png") no-repeat
   background-size: cover
+  background-attachment: fixed
   margin-top: 64px
   border-top: 1px solid rgba($white, .2)
   border-bottom: 1px solid rgba($white, .2)
+  transition: all .3s
+  @include _480
+    display: none
 
-  div img
-    margin-bottom: 25px
+  div
+    img
+      margin-bottom: 25px
+      @include _480
+        margin: 0
+
   section
+    height: auto
     display: grid
     padding-bottom: 0
     padding-top: 0
+    transition: all .3s
     grid-template-columns: auto 460px
 
     &:nth-child(2n -1)
-      grid-template-columns:  460px auto
+      grid-template-columns: 460px auto
+
+    @include _1200
+      grid-template-columns: auto 278px
+      grid-gap: 30px
+      &:nth-child(2n -1)
+        grid-template-columns: 278px auto
+    @include _480
+
+      grid-template-columns: 1fr
+
+      img
+        grid-row: 1/2
+      &:nth-child(2n -1)
+        grid-template-columns: 1fr
+
   .services
     display: grid
     grid-template-columns: 460px auto
     position: relative
     grid-column-gap: 105px
+    transition: all .2s
+    @include _1200
+      grid-column-gap: 40px
+    @include _768
+      grid-template-columns: 278px auto !important
+
+    @include _480
+      grid-template-columns: 1fr !important
+      .large-button
+        display: none
+
     .text
       padding: 0
 
+      p
+        padding-bottom: 10px
+
+      num
+        @include _768
+          margin-top: 35px
+          margin-bottom: 30px
 
 
-div
   .text
     display: grid
     align-content: start
@@ -1956,14 +2559,25 @@ div
     position: relative
     padding: 0 122px
     align-items: center
+    @include _1200
+      padding: 0 20px
+      margin-bottom: 15px
+    @include _768
+      padding: 0
+
+
     &:after
-        content: ''
-        position: absolute
-        top: 0
-        left: 0
-        height: 1px
-        background: rgba($white, .2)
-        width: calc(1440px - 460px)
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      height: 1px
+      background: rgba($white, .2)
+      width: calc(1440px - 460px)
+      @include _1366
+        width: calc(100vw - 60px)
+      @include _480
+        content: none
 
     num
       margin-top: 51px
@@ -1974,6 +2588,9 @@ div
       letter-spacing: 0.04em
       color: #B1B1B1
       position: relative
+      @include _768
+        margin-top: 25px
+        margin-bottom: 20px
 
       &:after
         content: ''
@@ -1990,22 +2607,49 @@ div
       line-height: 125%
       color: $white
       margin: 15px 0
+      @include _768
+        font-size: 16px
+
       &.red
         color: $red
+
+    .wrapper
+      transition: all .3s
+      height: auto
+
+      p
+        margin-bottom: 10px
+        padding-bottom: 10px
+      overflow: hidden
+
+      &.closed
+        height: 9em
+
+      @include _768
+        &.closed
+
+
     p
       font-size: 15px
       line-height: 145%
       letter-spacing: 0.04em
       color: #B1B1B1
-      padding-bottom: 15px
+
+      transition: all .2s
+
+      @include _768
+        font-size: 14px
+        line-height: 120%
+
       &:last-child
-        //padding-bottom: 45px
+    //padding-bottom: 45px
     span.bold, h3
       font-size: 15px
       line-height: 145%
       font-weight: bold
       letter-spacing: 0.04em
       color: $white
+
     h3
       margin: 15px 0 25px
 
@@ -2018,3 +2662,622 @@ div
       text-decoration-line: underline
       color: $red
       margin: 15px 0
+      @include _768
+        margin-bottom: -0px
+
+
+.team, .thesis, .reviews, .partners
+  h2
+    font-weight: bold
+    font-size: 18px
+    line-height: 125%
+    color: $red
+    grid-column: 1/3
+    @include _480
+      font-size: 14px
+
+section.thesis
+  overflow: hidden
+  @include _1366
+    padding-bottom: 50px
+  @include _768
+    padding-top: 40px
+    padding-bottom: 45px
+  @include _480
+    padding-top: 20px
+    padding-bottom: 35px
+
+  p.main-text
+    margin-top: 15px
+    margin-bottom: 45px
+    font-weight: bold
+    font-size: 36px
+    line-height: 145%
+    color: $white
+    @include _1366
+      font-size: 31px
+    @include _768
+      font-size: 24px
+      margin-bottom: 35px
+    @include _480
+      font-size: 18px
+      margin-top: 10px
+      margin-bottom: 15px
+
+  span
+    float: left
+    font-size: 15px
+    line-height: 145%
+    color: #B1B1B1
+    max-width: 500px
+    margin-right: 100px
+    letter-spacing: 0.04em
+    @include _768
+      &:not(:last-child)
+        margin-bottom: 25px
+    @include _480
+      margin-right: 0
+
+section.team
+  display: grid
+  grid-template-columns: 1fr  827px
+  grid-gap: 50px
+  @include _1200
+    grid-template-columns: 1fr 2fr
+  @include _768
+    display: grid
+    grid-template-columns: 1fr
+    grid-row-gap: 44px
+    grid-column-gap: 0px
+  @include _480
+    grid-row-gap: 25px
+
+  .cards
+    display: grid
+    grid-template-columns: 1fr 1fr
+    grid-column-gap: 25px
+    @include _768
+      grid-row: 2/3
+    @include _480
+      display: block
+      max-width: calc(100vw - 15px)
+
+    .card
+      &:focus
+        outline: none
+
+      @include _480
+        max-width: 230px
+        margin-right: 22px
+
+      &:nth-child(2n)
+        transform: translateY(20px)
+        @include _480
+          transform: translateY(0)
+
+      img
+        margin-bottom: 32px
+
+      h3.name
+        font-weight: bold
+        font-size: 18px
+        line-height: 145%
+        color: $white
+        letter-spacing: 0.04em
+        position: relative
+        @include _480
+          font-size: 16px
+
+        &:after
+          content: ''
+          position: absolute
+          height: 2px
+          width: 18px
+          background: $red
+          top: -16px
+          left: 0
+
+      h4.title
+        font-weight: 500
+        font-size: 13px
+        line-height: 145%
+        letter-spacing: 0.04em
+        color: #B1B1B1
+        @include _480
+          font-size: 10px
+
+  .text-descr
+    @include _768
+      padding-top: 20px
+      grid-row: 3/4
+    @include _480
+      padding-top: 0
+
+    p
+      font-size: 16px
+      line-height: 165%
+      color: #B1B1B1
+      @include _1366
+        font-size: 14px
+
+      &:not(:last-child)
+        padding-bottom: 1.5em
+
+
+section.reviews
+  .controls
+    position: absolute
+    top: 101px
+    right: $lr_padding
+    background: #242424
+    z-index: 10
+
+    .slick-disabled
+      opacity: .3
+
+    @include _1500
+      top: 20px
+      right: 30px
+    @include _768
+      top: 82px
+    @include _480
+      display: none
+
+  @include _480
+    margin-top: 25px
+
+  .reviews-slider
+    margin-top: 100px
+    overflow: hidden
+    @include _768
+      margin-top: 40px
+    @include _480
+      margin-top: 25px
+
+    .review
+      display: grid
+      grid-template-columns: 1fr 1fr
+      grid-column-gap: 88px
+      align-items: center
+
+      &:focus
+        outline: none
+
+      @include _768
+        grid-template-columns: 1fr
+        grid-row-gap: 25px
+
+      .info
+        display: grid
+        grid-row-gap: 25px
+
+        .titles
+          display: grid
+          padding-left: 105px
+          position: relative
+          overflow: hidden
+          @include _480
+            padding-left: 0
+
+          &:before
+            content: '“'
+            color: $white
+            position: absolute
+            font-family: Montserrat
+            font-style: normal
+            font-weight: bold
+            font-size: 180px
+            bottom: -25px
+            line-height: 50px
+            @include _480
+              content: none
+
+          h4.name
+            font-family: $two_mass
+            color: $white
+            font-style: normal
+            font-weight: normal
+            font-size: 24px
+            line-height: 125%
+
+          h5.title
+            font-style: normal
+            font-weight: normal
+            font-size: 15px
+            line-height: 145%
+            letter-spacing: 0.04em
+            color: #B1B1B1
+            margin: 5px 0 20px
+            position: relative
+            @include _480
+              font-size: 13px
+              margin: 3px 0 16px
+
+            &:after
+              content: ''
+              position: absolute
+              height: 2px
+              width: 18px
+              background: $red
+              bottom: -10px
+              left: 0
+
+        .inner
+          display: grid
+          align-items: center
+          grid-template-columns: 300px 1fr
+          @include _480
+            grid-template-columns: 1fr
+            grid-gap: 25px
+
+          .review-title
+            margin-left: -50px
+            @include _480
+              margin-left: 0
+
+            p
+              font-style: normal
+              font-weight: bold
+              font-size: 24px
+              line-height: 145%
+              color: $white
+              @include _480
+                font-size: 16px
+
+            .bread
+              margin-top: 25px
+              display: inline-grid
+              grid-template-columns: repeat(3, auto)
+              grid-column-gap: 16px
+
+            span.project
+              font-size: 15px
+              line-height: 145%
+              color: #B1B1B1
+              letter-spacing: 0.04em
+              @include _480
+                font-size: 12px
+
+            a
+              text-decoration: none
+
+              &:focus
+                outline: none
+
+              span.project-title
+                font-size: 18px
+                line-height: 115%
+                /* identical to box height, or 21px */
+                color: $white
+                letter-spacing: 0.1em
+                @include _480
+                  font-size: 15px
+
+            svg
+              transform: translateY(3px)
+
+
+      .review-text
+        font-weight: 500
+        font-size: 14px
+        line-height: 165%
+        color: $white
+        @include _480
+          margin-right: 10px
+
+  ul.slick-dots
+    text-align: left
+    bottom: -40px
+
+    li
+      display: inline-block
+      width: calc(10% - 10px)
+      background: #4f4f4f
+      height: 4px
+      margin: 4px
+      transition: all .3s
+
+      &.slick-active
+        width: 20%
+        background: $red
+
+section.partners
+  @include _480
+    margin-top: 25px
+
+  .square
+    margin-top: 25px
+    padding: 92px 130px
+    justify-self: stretch
+    border: 2px solid #DA2525
+    display: grid
+    grid-template-columns: repeat(6, 1fr)
+    justify-content: center
+    justify-items: center
+    grid-gap: 80px
+    @include _768
+      padding: 50px 70px
+    @include _480
+      grid-template-columns: repeat(3, 1fr)
+      padding: 30px
+
+    img
+      max-width: 70px
+      @include _768
+        max-width: 40px
+
+
+section.footer-form
+  margin-top: 100px
+  padding-bottom: 100px
+  position: relative
+  overflow: hidden
+  box-sizing: border-box
+  transition: all .2s
+  @include _768
+    padding-bottom: 80px
+
+  .callback
+    display: grid
+    justify-items: start
+    grid-template-columns: repeat(2, 1fr)
+    grid-column-gap: 45px
+    grid-row-gap: 70px
+    @include _768
+      justify-items: start
+      grid-template-columns: 1fr
+      grid-gap: 45px
+
+    .large-button
+      max-width: 582px
+      @include _768
+        max-width: 100%
+
+    .grid
+      display: grid
+      justify-self: stretch
+      max-width: 582px
+      @include _768
+        max-width: 100%
+
+    label
+      font-weight: 600
+      font-size: 15px
+      line-height: 145%
+      letter-spacing: 0.04em
+      color: #B1B1B1
+      opacity: 0.4
+      margin-bottom: 5px
+      margin-left: 3px
+      @include _480
+        font-size: 12px
+
+      &:not(:first-child)
+        margin-top: 45px
+
+    .field
+      width: 100%
+      resize: none
+
+      &.text
+
+      &::placeholder
+        font-style: normal
+        font-weight: 300
+        font-size: 16px
+        line-height: 145%
+        /* or 23px */
+        letter-spacing: 0.04em
+        color: rgba($white, .8)
+        @include _480
+          font-size: 14px
+
+    .textarea
+      padding-bottom: 25px
+      margin-bottom: 45px
+      width: 582px
+      @include _768
+        width: 100%
+        margin-bottom: 0
+        padding-bottom: 0
+      @include _480
+        font-size: 14px
+
+  .question
+    display: none
+    position: absolute
+    top: 0
+    left: 0
+    width: 100vw
+    height: 100%
+    background: #242424
+    align-items: center
+    justify-items: center
+    opacity: 0
+
+    .tnx
+      max-width: 60vw
+      display: grid
+      @include _768
+        max-width: 80vw
+
+      h2.title
+        padding-bottom: 25px
+        margin-bottom: 25px
+        position: relative
+        @include breakpoints_text(34px, 34px, 18px)
+        color: $white
+
+        &:after
+          content: ''
+          position: absolute
+          height: 5px
+          width: 60%
+          background: $red
+          bottom: 0
+          left: 0
+          transition: .2s
+
+      p
+        @include breakpoints_text(15px, 15px, 14px)
+        color: #B1B1B1
+        max-width: 60%
+        @include _768
+          max-width: 80%
+        @include _480
+          max-width: 100%
+
+      h3.red
+        font-family: Montserrat
+        font-style: normal
+        font-weight: 600
+        font-size: 15px
+        line-height: 145%
+        color: $red
+        letter-spacing: 0.04em
+        margin-top: 25px
+        margin-bottom: 6px
+
+      .time
+        display: grid
+        grid-gap: 25px
+        justify-self: start
+        grid-template-columns: 1fr 1fr
+        @include _768
+          grid-template-columns: 1fr
+          margin-top: 19px
+
+        span
+          font-weight: 600
+          color: $white
+          font-size: 15px
+
+        small
+          color: #B1B1B1
+          @include breakpoints_text(15px, 15px, 14px)
+
+
+    &.success
+      display: grid
+      opacity: 1
+      animation: fadeinDown .5s
+
+      h2:after
+        width: 70%
+
+    @include _480
+      width: 100%
+
+  h4
+    font-family: $two_mass
+    font-style: normal
+    font-weight: 900
+    font-size: 48px
+    line-height: 64px
+    letter-spacing: 0.1em
+    display: inline-block
+    text-transform: uppercase
+    color: $white
+    @include _768
+      font-size: 24px
+    @include _480
+      font-size: 18px
+
+  h5
+    font-weight: 500
+    font-size: 18px
+
+
+    line-height: 125%
+    color: $white
+    margin-top: 0
+    margin-bottom: 55px
+    @include _768
+      font-size: 16px
+    @include _480
+      font-size: 14px
+
+  svg
+    position: absolute
+    bottom: -600px
+    left: -15%
+    pointer-events: none
+    @include _768
+      display: none
+
+
+.pnf
+  overflow: hidden
+  padding-top: 200px
+  padding-bottom: 200px
+  z-index: 2
+  position: relative
+  background: url("../img/404.svg") no-repeat -10% 50%
+  @include _1440
+    background: url("../img/404.svg") no-repeat 60% 50%
+  @include _1200
+    background: url("../img/404.svg") no-repeat 50% 50%
+    background-size: cover
+  @include _768
+    background: url("../img/404.svg") no-repeat 100% 50%
+    background-size: cover
+  @include _480
+    background: none
+
+  h1
+    font-family: $two_mass
+    color: $red
+    font-style: normal
+    font-weight: 900
+    font-size: 288px
+    @include breakpoints_text(288px, 140px, 140px)
+    line-height: 1em
+    display: inline-block
+    z-index: 200000
+    perspective: 2px
+    @include _480
+      width: 100%
+      text-align: center
+      font-size: 80px
+
+
+  p
+    display: inline-block
+    font-weight: 500
+    font-size: 14px
+    line-height: 145%
+    /* or 20px */
+    color: $white
+    letter-spacing: 0.04em
+    vertical-align: top
+    max-width: 280px
+    z-index: 200
+    @include _480
+      font-size: 12px
+      text-align: center
+      margin: 20px 0
+
+  svg
+
+    z-index: 1
+    left: 0
+    @include _1440
+      left: -1%
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus
+  border: 0
+  -webkit-box-shadow: 0 0 0px 1000px transparent inset
+  transition: background-color 5000s ease-in-out 0s
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, rgba(0, 174, 255, 0.04) 50%, rgba(255, 255, 255, 0) 51%, rgba(0, 174, 255, 0.03) 100%)

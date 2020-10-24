@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from tinymce.models import HTMLField
 
 
 def year_choices():
@@ -30,6 +31,9 @@ class SiteConfig(models.Model):
     telegram_link = models.CharField('Ссылка Telegram', max_length=50)
     houzz_link = models.CharField('Ссылка Houzz', max_length=50)
     meta_words = models.TextField('Ключевые слова в формате: "some, key, words"', blank=True)
+    is_active = models.BooleanField('Включены')
+    descr = models.TextField('SEO описание', blank=True)
+    descr_eng = models.TextField('SEO описание на английском', blank=True)
 
     def __str__(self):
         return "Настройки сайта"
@@ -37,6 +41,7 @@ class SiteConfig(models.Model):
     class Meta:
         verbose_name = 'Настройки сайта'
         verbose_name_plural = 'Настройки сайта'
+
 
 class CaseCategory(models.Model):
     name_ru = models.CharField('Название категрии', max_length=30)
@@ -89,6 +94,7 @@ class Case(BaseClass):
     project_plan = models.ImageField("План проекта", upload_to='Cases/', blank=True)
     location_ru = models.CharField('Лоцакия', max_length=30)
     location_eng = models.CharField('Лоцакия на английском', max_length=30)
+    seo_dictinary = models.TextField('SEO keywords (через запятую) ')
 
     def __str__(self):
         return self.title_ru
@@ -100,14 +106,15 @@ class Case(BaseClass):
 
 class Review(BaseClass):
     name = models.CharField('Имя', blank=False, max_length=30)
+    name_eng = models.CharField('Имя', blank=False, max_length=30, default=' ')
     title_ru = models.CharField('Должность', max_length=30)
     title_eng = models.CharField('Должность на английском', max_length=30)
     image = models.ImageField("Фото клиента", upload_to='Clients/', blank=True)
     project = models.ForeignKey(Case, verbose_name='Проект', blank=True, null=True, on_delete=models.CASCADE)
-    review_title_ru = models.CharField('Заголовок отзыва', blank=False, max_length=30)
-    review_body_ru = models.TextField('Отзыв', blank=False)
-    review_title_eng = models.CharField('Заголовок отзыва на англипйском', blank=False, max_length=30)
-    review_body_eng = models.TextField('Отзыв на английском', blank=False)
+    review_title_ru = models.CharField('Заголовок отзыва', blank=False, max_length=200)
+    review_body_ru = HTMLField('Отзыв', blank=False)
+    review_title_eng = models.CharField('Заголовок отзыва на англипйском', blank=False, max_length=200)
+    review_body_eng = HTMLField('Отзыв на английском', blank=False)
 
     def __str__(self):
         return self.name
@@ -146,11 +153,11 @@ class Partners(BaseClass):
 
 
 class Request(models.Model):
-    name = models.CharField('Имя', max_length=30)
-    email = models.CharField('Почта', max_length=30)
-    massage = models.TextField("Сообщение   ", blank=True)
-    phone = models.IntegerField('Телефон', blank=True)
-    question_or_request = models.BooleanField('Заявка', default=False)
+    name = models.CharField('Имя', editable=False, max_length=30)
+    email = models.CharField('Почта', editable=False, max_length=30)
+    massage = models.TextField("Сообщение", editable=False, blank=True, null=True)
+    phone = models.CharField('Телефон', editable=False, blank=True, default='Без номера телефона', max_length=25)
+    from_page = models.CharField('Заявка из', editable=False, default='1', max_length=100)
     created_at = models.DateTimeField('Отправлено', auto_now_add=True)
     updated_at = models.DateTimeField('Измененно', auto_now=True)
     status = models.BooleanField('Обработан', default=False)

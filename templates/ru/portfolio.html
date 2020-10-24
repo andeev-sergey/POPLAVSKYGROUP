@@ -4,15 +4,47 @@
         <div class="category">
 
             <div class="items">
-                <a href="" class="active">Архитектура</a>
-                <a href="">Интерьеры «B2C»</a>
-                <a href="">Коммерческие интерьеры «B2B»</a>
-                <a href="">Реализованные проекты</a>
+                <a href=""  data-tab="1" class="active">Архитектура</a>
+                <a href=""  data-tab="2" >Интерьеры «B2C»</a>
+                <a href=""  data-tab="3" >Коммерческие интерьеры «B2B»</a>
+                <a href=""  data-tab="4" >Реализованные проекты</a>
             </div>
-            <div class="text">
-                <p>Lorem Ipsum - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является
-                    стандартной "рыбой" для текстов на латинице с начала XVI века. </p>
-            </div>
+            <div class="text data_1 active">
+                    <p>Наша студия занимается разработкой различных архитектурных объектов: частных апартаментов,
+                        коттеджей, многоэтажных жилых домов, спортивных сооружений, общественных зданий, торговых
+                        площадей и
+                        т.д.</p>
+                    <p>
+                        Мы осуществляем весь цикл стадийного проектирования - от концепций до рабочих чертежей, с
+                        подготовкой полного пакета проектно-сметной документации. Имеем опыт прохождения экспертизы
+                        проектно-сметной документации, согласования в надзорных органах. Также осуществляем авторский
+                        надзор
+                        за соблюдением проектных решений в процессе строительства.</p>
+                </div>
+                <div class="text data_2">
+                    <p>Неотъемлемой частью дизайн проектов нашей студии являются частные интерьеры - интерьеры жилых
+                        домов и квартир. Poplavsky Group обеспечивает создание персонифицированного жилья с
+                        планировочным решением согласно индивидуальным запросам заказчика </p>
+                    <p>Мы создаем самый разный
+                        дизайн интерьера жилых помещений и профессионально воплощаем любые идеи наших клиентов на любом
+                        пространстве с учетом выделенного бюджета. Оригинальность решения дизайна не зависит от
+                        площади.</p>
+
+                </div>
+                <div class="text data_3">
+                    <p>Для комфорта сотрудников и клиентов любого коммерческого заведения важна профессиональная
+                        организация пространства. Наша команда имеет большой опыт в разработке дизайн-проектов офисных
+                        помещений, ресторанов, торговых залов с соблюдением всех технологий и требований
+                        эргономики. </p>
+                    <p>Занимаются дизайном интерьеров специалисты соответствующего профиля - дизайнеры, в тесном
+                        сотрудничестве с архитекторами и технологами.</p>
+                </div>
+                <div class="text data_4">
+                    <p>По нашим проектам действительно строят и строят вполне успешно. За время работы было реализовано
+                        немало наших объектов, а также объектов, в проектировании которых компания принимала
+                        непосредственное участие.
+                    </p>
+                </div>
         </div>
 
     </section>
@@ -29,70 +61,10 @@
                 <h3 class="title">{{ case.title_ru}}</h3>
                 <a href="{% url 'case' case.pk %}" class="more">подробнее</a>
                 </div>
-            {% endfor %}
-
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
-        <div class="card">
-            <num class="card_number"></num>
-            <img src="{% static 'img/card.png' %}" alt="">
-            <h3 class="title">Название проекта номер первый</h3>
-            <a href="" class="more">подробнее</a>
-        </div>
+    {% endfor %}
 
 
     </div>
     <div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
+ {% include 'ru/footer-form.html' with title='Напишите нам' title_2='Свяжитесь с нами, чтобы задать!' %}
 {% endblock %}
