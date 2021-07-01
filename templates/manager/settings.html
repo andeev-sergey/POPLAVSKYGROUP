@@ -1,0 +1,64 @@
+{% extends 'manager/base.html' %} {% load static %} {% block content %}
+{% csrf_token %}
+
+
+<section id="project" class="settings">
+    <h1>Настройки сайта</h1>
+    <article>
+        <label for="">Телефон для заказчиков:</label>
+        <input class="cfg" type="text" name="phone" value="{{ s.phone }}">
+    </article>
+
+   <article>
+        <label for="">Телефон офиса:</label>
+        <input class="cfg" type="text" name="phone_office" value="{{ s.phone_office }}">
+    </article>
+
+    <article>
+        <label for="">Почта:</label>
+        <input class="cfg" type="text" name="mail" value="{{ s.mail }}">
+    </article>
+
+    <article>
+        <label for="">Ссылка вконтакте:</label>
+        <input class="cfg" type="text" name="vk_link" value="{{ s.vk_link }}">
+    </article>
+
+    <article>
+        <label for="">Ссылка Instagram:</label>
+        <input class="cfg" type="text" name="instagram_link" value="{{ s.instagram_link }}">
+    </article>
+
+    <article>
+        <label for="">Ссылка Telegram:</label>
+        <input class="cfg" type="text" name="telegram_link" value="{{ s.telegram_link }}">
+    </article>
+
+    <article>
+        <label for="">Ссылка Houzz:</label>
+        <input class="cfg" type="text" name="houzz_link" value="{{ s.houzz_link }}">
+    </article>
+
+    <article>
+        <label for=""></label>
+        <span>RU</span>
+        <span>ENG</span>
+    </article>
+
+    <article class="description">
+        <label for="">SEO:</label>
+        <textarea class="cfg" name="descr" id="" cols="30" rows="10">{{s.descr}}</textarea>
+        <textarea class="cfg" name="descr_eng" id="" cols="30" rows="10">{{s.descr_eng}}</textarea>
+    </article>
+    <article class="seo">
+        <label for="">Ключевые слова в формате: "some, key, words":</label>
+        <textarea class="cfg" name="meta_words" id="" cols="30" rows="5">{{s.meta_words}}</textarea>
+    </article>
+    <article>
+        <a href="" id="saveSettings" class="btn">Сохранить</a>
+    </article>
+</section>
+
+{% include "manager/js/scripts.html" with page="settings" %}
+
+{% endblock %}

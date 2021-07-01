@@ -59,10 +59,12 @@ class Area(models.Model):
     name_ru = models.CharField('Название зоны', max_length=30)
     name_eng = models.CharField('Название зоны на английском', max_length=30)
     area_value = models.CharField('Значение в м2', max_length=30)
+    sort = models.IntegerField('Уникальное сортировочное', blank= True)
 
     def __str__(self):
-        return self.area_value
-
+        return self.area_value + self.name_ru 
+    class Meta:
+        ordering = ('sort', )
 
 class Room(models.Model):
     name_ru = models.CharField('Название комнаты', max_length=30)
@@ -70,9 +72,12 @@ class Room(models.Model):
     image = models.ImageField('Изображение', upload_to='Rooms/', blank=True)
     room_descrition_ru = models.TextField('Описание комнаты', max_length=500)
     room_descrition_eng = models.TextField('Описание комнаты на английском', max_length=500)
-
+    sort = models.IntegerField('Уникальное сортировочное', blank= True)
     def __str__(self):
         return self.name_ru + ' ||| ' + self.room_descrition_ru
+
+    class Meta:
+        ordering = ['sort']
 
 
 class Case(BaseClass):
@@ -88,14 +93,16 @@ class Case(BaseClass):
     price_usd = models.IntegerField('Цена в $', blank=False)
     style_ru = models.CharField('Стиль проекта', max_length=30)
     style_eng = models.CharField('Стиль проекта на английском', max_length=30)
-    year = models.IntegerField('Год проекта', choices=year_choices(), default=current_year())
+    year = models.IntegerField('Год проекта', default=current_year())
     areas = models.ManyToManyField(Area, verbose_name='Площади', blank=False)
     rooms = models.ManyToManyField(Room, verbose_name='Комнты', blank=False)
     project_plan = models.ImageField("План проекта", upload_to='Cases/', blank=True)
     location_ru = models.CharField('Лоцакия', max_length=30)
     location_eng = models.CharField('Лоцакия на английском', max_length=30)
     seo_dictinary = models.TextField('SEO keywords (через запятую) ')
-
+    objects = models.Manager()
+    sort = models.IntegerField('Уникальное сортировочное', blank= True)
+    
     def __str__(self):
         return self.title_ru
 
@@ -168,3 +175,4 @@ class Request(models.Model):
     class Meta:
         verbose_name = 'Заявка'
         verbose_name_plural = 'Заявки'
+        ordering = ('created_at', )
