@@ -1,0 +1,63 @@
+{% extends 'manager/base.html' %} {% load static %} {% block content %}
+
+
+<section id="projects">
+        <h1>Проекты</h1>
+        <div class="filters">
+
+
+            <input type="search" name="search" id="search" placeholder="Поиск по названию">
+            <label for="active">Видны на сайте</label>
+            <input type="checkbox" name="active" id="visability">
+            <select id="category-filter">
+                <option value="0" aria-checked="true">Категория</option>
+                
+                {% for a in  categories %}
+                    <option value="{{a.id}}">{{ a }}</option>
+                {% endfor %}
+
+            </select>
+
+
+            <a href="{% url 'add-project' %}" class="add">Добавить</a>
+        </div>
+        <ul class="projects-list">
+
+            {% for case in cases %}
+
+               <li data-category="{{case.category.id}}">
+                <div class="img_wrap">
+                    <img src="{{ case.image.url }}" alt="" srcset="">
+                </div>
+                <h3 class="title">{{ case.title_ru }}</h3>
+                <div class="info">
+                    <span>Категория</span> <br>
+                    <span class="category">{{ case.category }}</span> 
+                    <span class="display  {% if case.display_on_site %} true {%else%} {% endif %}" title="Видимость на сайте"></span>
+                </div>
+               
+                <p class="short-dsecripton">
+                    {{ case.short_descrition_ru }}
+                </p>
+                <div class='actions'>
+                 {% if case.display_on_site %} 
+                    <a href="{% url 'case' case.pk %}" target="_blank">Посмотреть</a>
+                {%else%} 
+                
+                {% endif %}
+
+                
+                <a href="{% url 'case-edit' case.pk %}">Изменить</a>
+                </div>
+               
+            </li> 
+            {% endfor %}
+
+            
+        </ul>
+    </section>
+
+
+{% include "manager/js/scripts.html" with page="main" %}
+
+{% endblock %}

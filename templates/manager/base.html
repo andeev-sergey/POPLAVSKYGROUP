@@ -1,0 +1,37 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'style/managerMaster.css' %}">
+    <title>POPLAVSKY ADMIN</title>
+ 
+</head>
+<body>
+{% if request.user.is_superuser %}
+    <aside>
+        <img class="logo" src="http://poplavskygroup.ru/static/img/Logo.svg" alt="">
+        <nav>
+            <a href="{% url 'manager-main' %}" class="link">Проекты</a>
+            <a href="{% url 'requests' %}" class="link">Заявки</a>
+            <a href="{% url 'settings' %}" class="link">Настройки сайта</a>
+            <a href="{% url 'exit' %}" class="link">Выход</a>
+        </nav>
+    </aside>
+{% block content %}
+{% endblock %}
+{% include 'manager/modal.html' %}
+{% else %}
+<div style="display: grid; width: 100%;height: 50vh;align-items: center;justify-items: center"><h1 style="text-align: center">
+    <h2 style="align-self: end">Требуется авторизация</h2>
+    <a style="font-size: 14px; color: #333; align-self: start; " href="{% url 'admin:index' %}">Войти</a></h1></div>
+
+{% endif %}
+</body>
+
+</html>

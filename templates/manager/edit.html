@@ -1,0 +1,132 @@
+{% extends 'manager/base.html' %} {% load static %} {% block content %}
+{% csrf_token %}
+
+<section data-pk="{{ case.pk }}" id="project">
+    <h1>{{ case.title_ru }}</h1>
+    <article class="preview">
+        <label for="">Превью:</label>
+        <picture>
+            <input type="file" name="" id="preview">
+            <img id='previewOutput' src="{% if case.image %} {{ case.image.url }} {%endif%}">
+        </picture>
+    </article>
+    <article class="category">
+        <label for="">Категория:</label>
+        <select name="" id="">
+            {% for a in categories %}
+            {% if case.category.id == a.id %}
+            <option value="{{a.id}}" checked>{{a}}</option>
+            {% else %}
+            <option value="{{a.id}}">{{a}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+    </article>
+    <article>
+        <label for=""></label>
+        <span>RU</span>
+        <span>ENG</span>
+    </article>
+    <article>
+        <label for="">Название проекта:</label>
+        <input data-change="title_ru" id="projectTitle" type="text" value="{{case.title_ru}}">
+        <input data-change="title_eng" type="text" value="{{case.title_eng}}">
+    </article>
+    <article class="preview">
+        <label for="">План объекта:</label>
+        <picture>
+            <input type="file" name="" id="plan">
+            <img id='planOutput' src="{{ case.project_plan.url }}">
+        </picture>
+    </article>
+    <article class="shortDescription">
+        <label for="">Краткое писание проекта:</label>
+        <textarea data-change="short_descrition_ru" name="" id="" cols="30" rows="5">{{case.short_descrition_ru}}</textarea>
+        <textarea data-change="short_descrition_eng"
+                  name="" id="" cols="30" rows="5">{{case.short_descrition_eng}}</textarea>
+    </article>
+    <article class="description">
+        <label for="">Описание проекта:</label>
+        <textarea data-change="descrition_ru" name="" id="" cols="30" rows="10">{{case.descrition_ru}}</textarea>
+        <textarea data-change="descrition_eng" name="" id="" cols="30" rows="10">{{case.descrition_eng}}</textarea>
+    </article>
+    <article class="price">
+        <label for="">Цена</label>
+        <input data-change="price_rub" type="number" name="" id="" placeholder="{{case.price_rub}} ₽">
+        <input data-change="price_usd" type="number" name="" id="" placeholder="{{case.price_usd}} $">
+    </article>
+    <article class="style">
+        <label for="">Стиль проекта:</label>
+        <input data-change="style_ru" type="text" value="{{case.style_ru}}">
+        <input data-change="style_eng" type="text" value="{{case.style_eng}}">
+    </article>
+    <article class="location">
+        <label for="">Лоцакия:</label>
+        <input data-change="location_ru" type="text" value="{{case.location_ru}}">
+        <input data-change="location_eng" type="text" value="{{case.location_eng}}">
+    </article>
+    <article class="category ">
+        <label for="">Год проекта:</label>
+
+        <select name="" id="year">
+            {% for i in loop_times %}
+                {% if case.year == i %}
+                    <option value="{{ i }}" selected>{{ i }}</option>
+                {% else %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </article>
+
+
+    <article class="areas">
+
+        <label>Площади:</label>
+        <div class="areas-grid">
+            {% for a in areas %}
+            <div class="area" draggable="true"  data-sort="{{ a.sort }}">
+                <p data-pk="{{a.pk}}" data-eng="{{a.name_eng}}">{{a.name_ru}}</p>
+                <small>{{a.area_value}} м²</small>
+                <a class="change modal-btn" data-action="modal-change-area" href="#">Изменить</a>
+                <a class="change action-btn" data-action="removeArea" href="#">Удалить</a>
+            </div>
+
+            {% endfor %}
+
+            <a href="" data-action="modal-create-area" class="area modal-btn add">+</a>
+        </div>
+    </article>
+    <article class="rooms">
+
+        <label>Ракурсы:</label>
+        <div class="rooms-grid">
+            {% for r in rooms %}
+                <div class="room" draggable="true" data-sort="{{r.sort}}">
+
+                <img src="{% if r.image %}{{ r.image.url }}{% endif %}">
+                <p class="title" data-pk="{{r.pk}}" data-eng="{{ r.name_eng }}">{{ r.name_ru }}</p>
+                <div class="text" data-eng="{{ r.room_descrition_eng }}">{{ r.room_descrition_ru }}</div>
+                    <div class="controls">
+                        <a class="change modal-btn" data-action="modal-change-room" href="#">Изменить</a>
+                        <a class="change action-btn" data-action="removeRoom" href="#">Удалить</a>
+                    </div>
+
+                </div>
+            {% endfor %}
+            <a class="room modal-btn add" data-action="modal-create-room">+</a>
+        </div>
+    </article>
+    <article class="seo">
+        <label for="">SEO keywords (через запятую) :</label>
+        <textarea data-change="seo_dictinary" name="" id="" cols="30" rows="5">{{ case.seo_dictinary }}</textarea>
+    </article>
+    <article>
+        <a href="" id="edit" class="btn">Сохранить</a>
+    </article>
+    <article>
+        <a target="_blank" href="{% url 'case' case.pk %}"> Посмотреть на сайте </a>
+    </article>
+</section>
+{% include "manager/js/scripts.html" with page="edit-project" %}
+{% endblock %}

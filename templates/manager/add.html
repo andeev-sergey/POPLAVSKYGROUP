@@ -1,0 +1,103 @@
+{% extends 'manager/base.html' %} {% load static %} {% block content %}
+
+{% csrf_token %}
+
+<section id="project">
+    <h1></h1>
+
+    <article class="preview">
+        <label for="">Превью:</label>
+        <picture>
+            <input type="file" name="" id="preview">
+            <img id='previewOutput' src="">
+        </picture>
+    </article>
+    <article class="category">
+        <label for="">Категория:</label>
+        <select name="" id="">
+
+            <option value="" checked></option>
+
+            {% for a in categories %}
+
+            <option value="{{a.id}}">{{a}}</option>
+
+            {% endfor %}
+        </select>
+    </article>
+    <article>
+        <label for=""></label>
+        <span>RU</span>
+        <span>ENG</span>
+    </article>
+    <article>
+        <label for="">Название проекта:</label>
+        <input id="projectTitle" type="text" value="{{case.title_ru}}">
+        <input type="text" value="{{case.title_eng}}">
+    </article>
+    <article class="preview">
+        <label for="">План объекта:</label>
+        <picture>
+            <input type="file" name="" id="plan">
+            <img id='planOutput' src="">
+        </picture>
+    </article>
+    <article class="shortDescription">
+        <label for="">Краткое писание проекта:</label>
+        <textarea name="" id="" cols="30" rows="5"></textarea>
+        <textarea name="" id="" cols="30" rows="5"></textarea>
+    </article>
+    <article class="description">
+        <label for="">Описание проекта:</label>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea name="" id="" cols="30" rows="10"></textarea>
+    </article>
+    <article class="price">
+        <label for="">Цена</label>
+        <input type="number" name="" id="" placeholder="₽">
+        <input type="number" name="" id="" placeholder="$">
+    </article>
+    <article class="style">
+        <label for="">Стиль проекта:</label>
+        <input type="text">
+        <input type="text">
+    </article>
+    <article class="location">
+        <label for="">Лоцакия:</label>
+        <input type="text">
+        <input type="text">
+    </article>
+    <article class="category ">
+        <label for="">Год проекта:</label>
+
+        <select name="" id="year">
+            {% for i in loop_times %}
+            <option value="{{ i }}">{{ i }}</option>
+            {% endfor %}
+        </select>
+    </article>
+
+
+    <article class="areas">
+        <label>Площади:</label>
+        <div class="areas-grid">
+           
+
+            <a href="" data-action="modal-create-area" class="area modal-btn add">+</a>
+        </div>
+    </article>
+    <article class="rooms">
+        <label>Ракурсы:</label>
+        <div class="rooms-grid">
+           
+            <a class="room modal-btn add" data-action="modal-create-room">+</a>
+        </div>
+    </article>
+    <article class="seo">
+        <label for="">SEO keywords (через запятую) :</label>
+        <textarea name="" id="" cols="30" rows="5"></textarea>
+    </article>
+    <article><a href="" id="save" class="btn">Сохранить</a></article>
+</section>
+{% include "manager/js/scripts.html" with page="add-project" %}
+{% endblock %}

@@ -1,0 +1,15 @@
+
+{% load static %}
+    <script src="{% static 'manager/js/managerMaster.js' %}" type="module" charset="utf-8"></script>
+{% if page == "add-project" %}
+    <script src="{% static 'manager/js/addProject.js' %}" type="module" charset="utf-8"></script>
+{% elif page == "change-project" %}
+    <script src="{% static 'manager/js/editProject.js' %}" type="module" charset="utf-8"></script>
+{% elif page == "main" %}
+    <script src="{% static 'manager/js/mainManager.js' %}" type="module" charset="utf-8"></script>
+{% elif page == "requests" %}
+    <script src="{% static 'manager/js/requestsManager.js' %}" type="module" charset="utf-8"></script>
+{% elif page == "settings" %}
+    <script src="{% static 'manager/js/settings.js' %}" type="module" charset="utf-8"></script>
+{% endif %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" charset="utf-8"></script>

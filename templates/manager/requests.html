@@ -1,0 +1,40 @@
+{% extends 'manager/base.html' %} {% load static %} {% block content %}
+    {% csrf_token %}
+    <section id="requests">
+        <h1>Заявки {{all}} (+ {{new}})</h1>
+        <div class="tabs">
+            <div data-type="true" data-filter="true" class="tab active">
+                Новые
+            </div>
+            <div data-type="false" data-filter="false" class="tab">
+                Обработанные
+            </div>
+        </div>
+
+        <div class="header">
+            <span>Имя</span>
+            <span>Телефон</span>
+            <span>Почта</span>
+            <span>Дата отправки</span>
+            <span>Расположение формы</span>
+        </div>
+
+        <article id='requestTable'>
+
+
+        {% for a in requests %}
+            <div data-pk="{{a.pk}}" data-status="{% if a.status == False %}true{% else %}false{% endif %}" class="request">
+                <span>{{ a.name }}</span>
+                <span>{{ a.phone }}</span>
+                <span>{{ a.email }}</span>
+                <span>{{ a.created_at }}</span>
+                <span>{{ a.from_page }}</span>
+            </div>
+        
+        {% empty %}{% endfor %}
+        </article>
+
+    </section>
+{% include "manager/js/scripts.html" with page="requests" %}
+ 
+{% endblock %}
